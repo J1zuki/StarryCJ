@@ -1,3 +1,4 @@
+/* RESET */
 * {
   margin: 0;
   padding: 0;
@@ -5,18 +6,26 @@
   font-family: 'Segoe UI', sans-serif;
 }
 
+/* FULL SCREEN */
 html, body {
   width: 100%;
   height: 100%;
 }
 
+/* BACKGROUND */
 body {
-  background-image: url("/images/background.jpg");
+  background: 
+    linear-gradient(
+      rgba(0, 0, 0, 0.15),
+      rgba(0, 0, 0, 0.15)
+    ),
+    url("/images/background.jpg"); /* relative path */
+
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: center;
   background-size: cover;
 
-  /* Sharp rendering */
+  /* Prevent unwanted smoothing */
   image-rendering: auto;
 
   display: flex;
@@ -24,30 +33,29 @@ body {
   align-items: center;
 }
 
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.2);
-  z-index: -1;
-}
-
+/* LOGIN CARD */
 .login-container {
   width: 320px;
   padding: 30px;
   border-radius: 16px;
+
+  /* Keep blur ONLY inside the card */
   background: rgba(0, 0, 0, 0.55);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
   color: white;
   text-align: center;
 }
 
+/* LOGO */
 .logo {
   font-family: 'Georgia', serif;
   letter-spacing: 2px;
   margin-bottom: 25px;
 }
 
+/* FORM */
 form {
   display: flex;
   flex-direction: column;
@@ -59,6 +67,7 @@ label {
   margin-bottom: 4px;
 }
 
+/* INPUTS */
 input {
   padding: 10px;
   border-radius: 8px;
@@ -70,6 +79,7 @@ input:focus {
   outline: 2px solid #ffd700;
 }
 
+/* HINT */
 .hint {
   font-size: 12px;
   margin-bottom: 15px;
@@ -80,6 +90,7 @@ input:focus {
   cursor: pointer;
 }
 
+/* BUTTON */
 button {
   padding: 10px;
   border: none;
