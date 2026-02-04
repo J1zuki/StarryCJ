@@ -14,19 +14,12 @@ html, body {
 
 /* BACKGROUND */
 body {
-  background: 
-    linear-gradient(
-      rgba(0, 0, 0, 0.15),
-      rgba(0, 0, 0, 0.15)
-    ),
-    url("/images/background.jpg"); /* relative path */
-
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-
-  /* Prevent unwanted smoothing */
-  image-rendering: auto;
+  background: linear-gradient(
+    135deg,
+    #05060a 0%,     /* near black */
+    #0b1c2d 50%,    /* dark navy blue */
+    #081420 100%    /* deep blue-black */
+  );
 
   display: flex;
   justify-content: center;
@@ -39,7 +32,6 @@ body {
   padding: 30px;
   border-radius: 16px;
 
-  /* Keep blur ONLY inside the card */
   background: rgba(0, 0, 0, 0.55);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
@@ -48,11 +40,14 @@ body {
   text-align: center;
 }
 
-/* LOGO */
-.logo {
-  font-family: 'Georgia', serif;
-  letter-spacing: 2px;
-  margin-bottom: 25px;
+/* LOGO IMAGE (REPLACES .logo TEXT) */
+.logo-img {
+  display: block;
+  margin: 0 auto 25px auto;
+
+  width: 220px;        /* adjust size here */
+  max-width: 100%;
+  height: auto;
 }
 
 /* FORM */
