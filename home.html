@@ -6,14 +6,26 @@
 </head>
 
 <body>
-  <h1>Welcome to STARRYCJ 🌟</h1>
+  <h1>Welcome, <span id="userName"></span> 🌟</h1>
+  <img id="userAvatar" style="width:80px;border-radius:50%;display:none">
+
   <p>You are logged in.</p>
 
   <script>
     const token = localStorage.getItem("token");
+    const user = localStorage.getItem("currentUser");
 
-    if (!token) {
+    if (!token || !user) {
       window.location.href = "./login.html";
+    }
+
+    document.getElementById("userName").textContent = user;
+
+    const avatar = localStorage.getItem("currentAvatar");
+    if (avatar) {
+      const img = document.getElementById("userAvatar");
+      img.src = avatar;
+      img.style.display = "block";
     }
   </script>
 </body>
