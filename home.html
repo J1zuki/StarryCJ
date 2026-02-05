@@ -1,32 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>STARRYCJ Home</title>
+  <link rel="stylesheet" href="./css/home.css">
 </head>
 
 <body>
-  <h1>Welcome, <span id="userName"></span> 🌟</h1>
-  <img id="userAvatar" style="width:80px;border-radius:50%;display:none">
+  <header class="top-header">
+    <img src="./images/logo/logoo (1).png" alt="STARRYCJ" class="header-logo">
+  </header>
 
-  <p>You are logged in.</p>
+  <div class="app">
+    <!-- FEATURED -->
+    <section class="section">
+      <h2>Featured Products</h2>
 
-  <script>
-    const token = localStorage.getItem("token");
-    const user = localStorage.getItem("currentUser");
+      <div class="product-row">
+        <div class="product-card">
+          <video 
+            src="./images/product/starHeadsets.mp4"
+            autoplay
+            muted
+            loop
+            playsinline
+          ></video>
+        </div>
+        <div class="product-card">
+          <img src="./images/product/Headphone1.jpeg">
+        </div>
+        <div class="product-card">
+          <img src="./images/product/Headphone2.jpeg">
+        </div>
+      </div>
 
-    if (!token || !user) {
-      window.location.href = "./login.html";
-    }
+      <button class="primary-btn">Buy Now</button>
+    </section>
 
-    document.getElementById("userName").textContent = user;
+    <!-- GAMIFICATION -->
+    <section class="gamification">
+      <div class="game-card">
+        <h3>Daily Login</h3>
+        <ul>
+          <li>Day 1 - <span>2 Gems</span></li>
+          <li>Day 2 - <span>3 Gems</span></li>
+          <li>Day 3 - <span>5 Gems</span></li>
+        </ul>
+        <button class="green-btn">Claim</button>
+      </div>
 
-    const avatar = localStorage.getItem("currentAvatar");
-    if (avatar) {
-      const img = document.getElementById("userAvatar");
-      img.src = avatar;
-      img.style.display = "block";
-    }
-  </script>
+      <div class="game-card">
+        <h3>Lucky Draw</h3>
+        <img src="images/luckydraw.png">
+        <button class="green-btn">1 Chance</button>
+      </div>
+    </section>
+
+    <!-- RECOMMENDED -->
+    <section class="section">
+      <h2>Recommended Products</h2>
+
+      <div class="product-row">
+        <div class="product-card small">
+          <img src="images/headphone4.png">
+          <button>View</button>
+        </div>
+        <div class="product-card small">
+          <img src="images/headphone5.png">
+          <button>View</button>
+        </div>
+        <div class="product-card small">
+          <img src="images/headphone6.png">
+          <button>View</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- BOTTOM NAV -->
+    <nav class="bottom-nav">
+      <span>🏠</span>
+      <span>ℹ️</span>
+      <span>🎁</span>
+      <span>🛒</span>
+      <span>👤</span>
+    </nav>
+  </div>
+
+  <!-- 🔒 AUTH CHECK -->
+    <script>
+      const token = localStorage.getItem("token");
+      const user = localStorage.getItem("currentUser");
+      if (!token || !user) {
+        window.location.href = "./login.html";
+      }
+    </script>
+
+    <script>
+      document.querySelector(".green-btn").addEventListener("click", () => {
+        alert("🎉 Reward claimed!");
+      });
+    </script>
 </body>
 </html>
