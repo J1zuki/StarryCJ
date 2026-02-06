@@ -1,3 +1,11 @@
+/* Define the variables that is used first */
+:root {
+  --gold: #f1c40f;
+  --space-blue: #015085;
+  --card-bg: #ffffff;
+  --text-dark: #333333;
+}
+
 * {
   box-sizing: border-box;
   font-family: 'Arial', sans-serif;
