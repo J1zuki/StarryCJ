@@ -1,8 +1,10 @@
 :root {
-  --starry-blue: #00477e;       /* deep blue */
-  --starry-light-blue: #7cb9e8; /* light blue for links */
-  --starry-gold: #ffcc00;       /* Gold color for highlights */
-  --card-bg: #0b1c2d;          /* Dark background for product cards */
+  --starry-blue: #00477e;
+  --starry-light-blue: #7cb9e8;
+  --starry-gold: #ffcc00;
+  --gold: #ffcc00; /* Added this as a backup */
+  --card-bg: #0b1c2d;
+}
 }
 
 * {
