@@ -37,6 +37,7 @@ body {
 }
 
 .header-logo {
+  
   height: 400px;
   width: auto;
   object-fit: contain;

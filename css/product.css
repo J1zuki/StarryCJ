@@ -1,0 +1,131 @@
+/* Custom variables for the theme */
+:root {
+  --starry-blue: #015085;
+  --starry-light-blue: #70b3e0; /* Matches the text in your video */
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(
+    135deg,
+    #05060a 0%,
+    #0b1c2d 50%,
+    #081420 100%
+  );
+}
+
+.app {
+  width: 100%;
+  max-width: 1200px;   /* desktop website width */
+  margin: 0 auto;
+  padding: 40px 20px 120px;
+}
+
+/* HEADER */
+.top-header {
+  width: 100%;
+  background-color: var(--starry-blue);
+  padding: 30px 0 15px 0; /* More padding on top for the logo */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* Logo styling */
+.navbar-brand img {
+  height: 120px; /* Adjusted based on the video visual */
+  width: auto;
+  margin-bottom: 20px;
+}
+
+/* Horizontal links container */
+.nav-links-list {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 40px; /* Space between links */
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--starry-light-blue);
+  font-family: 'Arial', sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: opacity 0.2s;
+}
+
+.nav-link:hover {
+  opacity: 0.8;
+  color: #ffffff;
+}
+/* Product Section */
+.section-title {
+    text-align: center;
+    color: var(--gold);
+    font-size: 1.2rem;
+    margin: 20px 0;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    padding: 0 15px 100px 15px;
+}
+
+/* Cards */
+.product-card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    padding: 10px;
+    text-align: center;
+    color: var(--text-dark);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.product-card img {
+    width: 100%;
+    border-radius: 10px;
+    height: 120px;
+    object-fit: contain;
+}
+
+.product-card h3 {
+    font-size: 0.9rem;
+    margin: 10px 0 5px;
+    color: var(--space-blue);
+}
+
+.product-card p {
+    font-size: 0.7rem;
+    margin-bottom: 10px;
+    height: 30px;
+    overflow: hidden;
+}
+
+.buy-btn {
+    background: var(--space-blue);
+    color: white;
+    border: none;
+    padding: 5px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
