@@ -1,0 +1,310 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(
+    135deg,
+    #05060a 0%,
+    #0b1c2d 50%,
+    #081420 100%
+  );
+}
+
+.app {
+  width: 100%;
+  max-width: 1200px;   /* desktop website width */
+  margin: 0 auto;
+  padding: 40px 20px 120px;
+}
+
+/* HEADER */
+.top-header {
+  width: 100%;
+  height: 120px;
+  background: linear-gradient(90deg, #015085, #015085);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 140px;
+  padding: 20px 0;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+}
+
+.header-logo {
+  height: 400px;
+  width: auto;
+  object-fit: contain;
+}
+
+.navbar-nav .nav-link {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.navbar-nav .nav-link:hover {
+  text-decoration: underline;
+}
+
+/* SECTIONS */
+.section {
+  padding: 16px;
+}
+
+.section h2 {
+  text-align: center;
+  margin-bottom: 24px;
+  font-size: 24px;
+  color: white;
+}
+
+h3 {
+  text-align: center;
+  margin-bottom: 24px;
+  font-size: 24px;
+}
+
+
+/* RECOMMENDED PRODUCTS */
+.recommended-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* PRODUCTS */
+.product-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.product-card {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+
+  width: 100%;
+  height: 260px;   /* desktop height */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-card img,
+.product-card video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.product-card.small {
+  height: 240px;
+}
+
+.product-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* VIEW BUTTON */
+.view-btn {
+  margin-top: 14px;
+  padding: 8px 26px;
+  border-radius: 999px;
+  background: #015085;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.view-btn:hover {
+  background: #4a76a3;
+  transform: translateY(-2px);
+}
+
+.daily-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.daily-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.day-label {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.gem-pill {
+  background: #005a8d;
+  color: white;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: bold;
+
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* BUTTONS */
+.primary-btn {
+  background: #ffffff;
+  color: #000;
+  border: none;
+  border-radius: 14px;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+
+  max-width: 320px;
+  margin: 24px auto 0;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.green-btn {
+  background: #3cff6a;
+  color: #000;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 14px;
+  margin: 16px auto 0;
+  display: block;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* GAMIFICATION */
+.gamification {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  max-width: 700px;
+  margin: 40px auto;
+  align-items: start;
+}
+
+.game-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 24px;
+  color: #000;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.game-card h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.game-card ul {
+  padding-left: 16px;
+  font-size: 14px;
+}
+
+.game-card li span {
+  color: #3cff6a;
+  font-weight: bold;
+}
+
+.game-card img {
+  width: 100%;
+  max-height: 140px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+/* FOOTER */
+.site-footer {
+  background: linear-gradient(90deg, #015085, #015085);
+  color: white;
+  padding: 50px 20px 20px;
+  margin-top: 80px;
+}
+
+.footer-links a,
+.footer-brand p,
+.footer-bottom {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.footer-links a:hover {
+  color: #ffffff;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.footer-brand img {
+  height: 150px;
+  margin-bottom: 10px;
+}
+
+.footer-brand p {
+  font-size: 14px;
+  color: #cbd5e1;
+}
+
+.footer-links h4 {
+  margin-bottom: 12px;
+  font-size: 16px;
+}
+
+.footer-links a {
+  display: block;
+  margin-bottom: 8px;
+  color: #cbd5e1;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.footer-links a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  font-size: 13px;
+  color: #a0aec0;
+}
