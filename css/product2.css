@@ -1,0 +1,120 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: #004280; /* Dark blue background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.background-container {
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.logo {
+    color: white;
+    letter-spacing: 5px;
+    margin-bottom: 10px;
+}
+
+.section-title {
+    color: #FFD700; /* Gold color */
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+/* Product Card */
+.product-card {
+    background: white;
+    border: 4px solid #B8860B; /* Gold border */
+    border-radius: 25px;
+    padding: 20px;
+    text-align: left;
+}
+
+.image-container {
+    background: #f0f0f0;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.product-image {
+    width: 100%;
+    display: block;
+}
+
+/* Title & Heart Animation */
+.title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.product-name {
+    color: #5B84B1;
+    font-size: 1.8rem;
+}
+
+.heart-icon {
+    font-size: 1.5rem;
+    cursor: pointer;
+    /* This triggers the animation */
+    animation: heartbeat 1.2s infinite ease-in-out;
+}
+
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    15% { transform: scale(1.3); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.15); }
+    60% { transform: scale(1); }
+}
+
+/* Text Content */
+.description, .aesthetic-profile {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.description strong, .aesthetic-profile h3 {
+    color: #0056b3;
+}
+
+.aesthetic-profile ul {
+    list-style: disc;
+    padding-left: 20px;
+}
+
+/* Button */
+.buy-button {
+    display: block;
+    width: 100%;
+    background-color: #5B84B1;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.buy-button:hover {
+    background-color: #43658b;
+}
