@@ -1,30 +1,24 @@
-:root {
-    --space-blue: #0a1931;
-    --gold: #ffcc33;
-    --card-bg: rgba(255, 255, 255, 0.9);
-    --text-dark: #333;
+* {
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
 }
 
 body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #222;
-    display: flex;
-    justify-content: center;
-    padding: 20px;
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(
+    135deg,
+    #05060a 0%,
+    #0b1c2d 50%,
+    #081420 100%
+  );
 }
 
-/* Mobile Frame Simulation */
-.mobile-container {
-    width: 375px;
-    height: 812px;
-    background: var(--space-blue);
-    background-size: 100px 100px;
-    border: 8px solid #333;
-    border-radius: 40px;
-    position: relative;
-    overflow-y: auto;
-    color: white;
+.app {
+  width: 100%;
+  max-width: 1200px;   /* desktop website width */
+  margin: 0 auto;
+  padding: 40px 20px 120px;
 }
 
 /* HEADER */
