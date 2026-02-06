@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>STARRYCJ Payment</title>
+    <link rel="stylesheet" href="./css/payment.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <header class="top-header">
+        <nav class="navbar navbar-expand-lg navbar-dark flex-column w-100">
+            <!-- LOGO -->
+            <a class="navbar-brand mb-2" href="home.html">
+                <img src="./images/logo/logoo (1).png" alt="STARRYCJ" height="100">
+            </a>
+
+            <!-- TEXT NAVBAR -->
+            <ul class="navbar-nav flex-row gap-4">
+                <li class="nav-item">
+                    <a class="nav-link" href="home.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="aboutus.html">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="information.html">Information</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="product.html">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="cart.html">Cart</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="profile.html">Profile</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="payment-header">
+        <button class="back-btn" onclick="goBack()">←</button>
+        <h2>Choose your payment method</h2>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main class="container">
+        <div class="payment-card">
+            <h3>Credit Card</h3>
+
+            <label class="payment-option">
+                <div class="left">
+                    <img src="./images/icons/creditcard.png">
+                    <span>Credit Card</span>
+                </div>
+                <input type="radio" name="payment" value="card" checked>
+            </label>
+
+            <label class="payment-option">
+                <div class="left">
+                    <img src="./images/icons/paynow.png">
+                    <span>PayNow</span>
+                </div>
+                <input type="radio" name="payment" value="paynow">
+            </label>
+
+            <label class="payment-option">
+                <div class="left">
+                    <img src="./images/icons/cash.png">
+                    <span>Cash</span>
+                </div>
+                <input type="radio" name="payment" value="cash">
+            </label>
+
+            <button class="confirm-btn">Confirm Payment</button>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <!-- BRAND -->
+            <div class="footer-brand">
+                <img src="./images/logo/logoo (1).png" alt="STARRYCJ">
+                <p>Premium headphones with rewards & fun.</p>
+            </div>
+
+            <!-- NAV LINKS -->
+            <div class="footer-links">
+                <h4>Shop with us now !</h4>
+                <a href="home.html">Home</a>
+                <a href="product.html">Products</a>
+                <a href="dailylogin.html">Daily Login Rewards</a>
+                <a href="cart.html">Cart</a>
+            </div>
+
+            <!-- INFO LINKS -->
+            <div class="footer-links">
+                <h4>Our Company</h4>
+                <a href="aboutus.html">About Us</a>
+                <a href="information.html">Information</a>
+            </div>
+        </div>
+
+        <!-- COPYRIGHT -->
+        <div class="footer-bottom">
+            © 2026 STARRYCJ. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        function goBack() {
+        window.location.href = "cart.html";
+        }
+    </script>
+
+    <script>
+        document.querySelector(".confirm-btn").addEventListener("click", () => {
+            const selected = document.querySelector('input[name="payment"]:checked');
+
+            if (!selected) {
+                alert("Please select a payment method");
+                return;
+            }
+
+            switch (selected.value) {
+                case "card":
+                    window.location.href = "creditcard.html";
+                    break;
+
+                case "paynow":
+                    window.location.href = "paynow.html";
+                    break;
+
+                case "cash":
+                    window.location.href = "cash.html";
+                    break;
+
+                default:
+                    alert("Invalid payment method");
+            }
+        });
+    </script>
+
+    <script>
+        document.querySelector(".confirm-btn").addEventListener("click", () => {
+            const selected = document.querySelector('input[name="payment"]:checked')
+                .parentElement.innerText.trim();
+            alert("Payment method selected: " + selected);
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
