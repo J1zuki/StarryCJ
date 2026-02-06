@@ -3,7 +3,7 @@
   --starry-light-blue: #7cb9e8;
   --starry-gold: #ffcc00;
   --white: #ffffff;
-  --card-bg: #0b1c2d;
+  --card-bg: #ffffff;
 }
 
 * {
@@ -77,7 +77,7 @@ body {
 
 .section-title {
     text-align: center;
-    color: var(--gold);
+    color: var(--white);
     margin-bottom: 30px;
 }
 
@@ -100,18 +100,34 @@ body {
 }
 
 .product-card {
-    background: var(--card-bg);
-    border: 1px solid rgba(124, 185, 232, 0.1); /* Subtle blue border */
-    border-radius: 15px;
-    padding: 20px;
+    background: #ffffff;
+    border: 8px solid #bf9900; /* Thick gold border from image */
+    border-radius: 45px;       /* Heavily rounded corners */
+    padding: 30px;
     text-align: center;
-    transition: all 0.3s ease;
+    max-width: 350px;
+    margin: 0 auto;
 }
 
 .product-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 10px 30px rgba(0, 71, 126, 0.4);
     border-color: var(--starry-light-blue);
+}
+
+/* Product Title */
+.product-name {
+    color: #5b7da3;           /* The specific blue color from your image */
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Description Text */
+.product-description {
+    color: #000000;
+    font-size: 1.2rem;
+    margin-bottom: 25px;
 }
 
 .buy-btn {
