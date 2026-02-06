@@ -1,62 +1,56 @@
-/* General Reset */
-* {
+/* General Setup */
+body, html {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
     font-family: 'Inter', sans-serif;
+    /* This simulates your blue textured background */
+    background: #004d85 url('../images/background-texture.jpg') no-repeat center center fixed;
+    background-size: cover;
 }
 
-body {
-    background-color: #004280; /* Dark blue background */
+.site-wrapper {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    min-height: 100vh;
-    padding: 20px;
+    padding: 40px 20px;
 }
 
-.background-container {
-    width: 100%;
-    max-width: 400px;
-    text-align: center;
-}
-
-.logo {
-    color: white;
-    letter-spacing: 5px;
-    margin-bottom: 10px;
-}
-
-.section-title {
-    color: #FFD700; /* Gold color */
-    font-weight: bold;
-    font-size: 1.5rem;
+/* Header & Title */
+.main-header {
     margin-bottom: 20px;
 }
 
-/* Product Card */
+.site-logo {
+    height: 120px; /* Larger logo like the image */
+}
+
+.page-title {
+    color: #ffffff;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+}
+
+/* The Card (Exact match to image) */
 .product-card {
-    background: white;
-    border: 4px solid #B8860B; /* Gold border */
-    border-radius: 25px;
-    padding: 20px;
-    text-align: left;
-}
-
-.image-container {
-    background: #f0f0f0;
-    border-radius: 20px;
+    background: #ffffff;
+    max-width: 500px; /* Keeps the portrait shape from your image */
+    border-radius: 30px;
+    border: 4px solid #f1c40f; /* The gold border */
     overflow: hidden;
-    margin-bottom: 15px;
+    padding: 25px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
 }
 
-.product-image {
+.main-media {
     width: 100%;
-    display: block;
+    border-radius: 20px;
+    margin-bottom: 20px;
 }
 
-/* Title & Heart Animation */
-.title-row {
+/* Typography */
+.name-heart-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -64,57 +58,50 @@ body {
 }
 
 .product-name {
-    color: #5B84B1;
-    font-size: 1.8rem;
+    color: #4b79a1; /* Muted blue from image */
+    font-size: 2rem;
+    margin: 0;
 }
 
 .heart-icon {
-    font-size: 1.5rem;
+    font-size: 2rem;
     cursor: pointer;
-    /* This triggers the animation */
-    animation: heartbeat 1.2s infinite ease-in-out;
+    color: #333;
 }
 
-@keyframes heartbeat {
-    0% { transform: scale(1); }
-    15% { transform: scale(1.3); }
-    30% { transform: scale(1); }
-    45% { transform: scale(1.15); }
-    60% { transform: scale(1); }
+.label {
+    color: #0056b3;
+    font-weight: 700;
 }
 
-/* Text Content */
-.description, .aesthetic-profile {
-    font-size: 0.9rem;
-    line-height: 1.4;
+.text-block p, .aesthetic-list li {
+    font-size: 1rem;
+    line-height: 1.5;
     color: #333;
     margin-bottom: 15px;
 }
 
-.description strong, .aesthetic-profile h3 {
-    color: #0056b3;
-}
-
-.aesthetic-profile ul {
-    list-style: disc;
+.aesthetic-list {
     padding-left: 20px;
+    list-style-type: disc;
 }
 
-/* Button */
+/* The Buy Button */
 .buy-button {
-    display: block;
     width: 100%;
-    background-color: #5B84B1;
+    background: #5d8aa8; /* The blue color of the button in your image */
     color: white;
     border: none;
-    padding: 12px;
-    border-radius: 25px;
-    font-size: 1.1rem;
+    padding: 15px;
+    border-radius: 50px;
+    font-size: 1.2rem;
     font-weight: bold;
     cursor: pointer;
-    transition: background 0.3s;
+    margin-top: 10px;
+    transition: transform 0.2s ease;
 }
 
 .buy-button:hover {
-    background-color: #43658b;
+    transform: scale(1.02);
+    background: #4a6e8a;
 }
