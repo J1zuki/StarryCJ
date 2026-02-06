@@ -15,9 +15,43 @@ body, html {
     padding: 40px 20px;
 }
 
-/* Header & Title */
+/* Back Navigation Styles */
+.back-nav {
+    width: 100%;
+    max-width: 550px; /* Aligns with the width of your card */
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.back-btn {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    padding: 8px 15px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.1); /* Subtle glass effect */
+}
+
+.back-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateX(-5px); /* Slight slide to the left */
+    color: #f1c40f; /* Turns gold on hover to match theme */
+}
+
+.back-btn .arrow {
+    font-size: 1.4rem;
+}
+
+/* Header */
 .main-header {
-    margin-bottom: 20px;
+    margin-top: -20px; 
+    margin-bottom: 10px;
 }
 
 .site-logo {
