@@ -3,6 +3,7 @@
     --dark-blue: #001a33;
     --navy-blue: #003366;
     --card-bg: #ffffff;
+    --used-gray: #999;
 }
 
 body {
@@ -21,7 +22,7 @@ body {
     padding: 40px 20px;
 }
 
-/* Back Button Styling */
+/* Back Button */
 .back-nav {
     margin-bottom: 20px;
 }
@@ -33,11 +34,11 @@ body {
     text-decoration: none;
     font-weight: 600;
     font-size: 0.9rem;
-    transition: 0.3s;
     background: rgba(255, 255, 255, 0.05);
     padding: 8px 15px;
     border-radius: 5px;
     border: 1px solid rgba(241, 210, 121, 0.3);
+    transition: 0.3s;
 }
 
 .btn-back:hover {
@@ -72,7 +73,6 @@ body {
     overflow: hidden;
 }
 
-/* Tabs Navigation */
 .reward-tabs {
     display: flex;
     border-bottom: 1px solid var(--gold);
@@ -81,11 +81,10 @@ body {
 .tab-btn {
     flex: 1;
     padding: 20px;
-    background: transparent;
-    border: none;
+    text-align: center;
+    text-decoration: none;
     color: white;
     font-size: 1rem;
-    cursor: pointer;
     transition: 0.3s;
 }
 
@@ -93,10 +92,6 @@ body {
     background: var(--navy-blue);
     color: var(--gold);
     font-weight: bold;
-}
-
-.tab-btn:hover:not(.active) {
-    background: rgba(255,255,255,0.1);
 }
 
 /* Content Area */
@@ -117,180 +112,98 @@ body {
     border: 2px solid var(--gold);
 }
 
-/* Grid for Vouchers */
-.voucher-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 20px;
-}
-
-.voucher-card {
-    background: white;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    padding: 20px;
-    border: 2px solid var(--gold);
-    transition: transform 0.2s;
-}
-
-.voucher-card:hover {
-    transform: translateY(-5px);
-}
-
-.voucher-brand {
-    background: transparent;
-    padding: 0;              
-    min-width: 100px;        
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
-
-.brand-img {
-    width: 80%;             
-    height: auto;          
-    display: block;
-    border-radius: 4px;
-}
-
-.voucher-info {
-    flex-grow: 1;
-    padding: 0 15px;
-    color: #333;
-}
-
-.voucher-info h3 {
-    font-size: 1rem;
-    margin: 0 0 5px 0;
-    line-height: 1.2;
-}
-
-.voucher-info .price {
-    color: #0066cc;
-    font-weight: bold;
-    margin: 0;
-}
-
-.redeem-btn {
-    background: var(--navy-blue);
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 0.85rem;
-}
-
-.redeem-btn:hover {
-    background: #004d99;
-}
-/* Sub-navigation inside My Vouchers */
+/* Status Nav */
 .voucher-status-nav {
     display: flex;
     justify-content: space-around;
-    border-bottom: 1px solid #003366;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     margin-bottom: 30px;
     padding-bottom: 5px;
 }
 
 .status-btn {
-    background: none;
-    border: none;
-    color: #555; /* Muted color for inactive */
+    text-decoration: none;
+    color: #888;
     font-size: 0.85rem;
     font-weight: 600;
-    cursor: pointer;
     padding: 10px 20px;
     letter-spacing: 1px;
+    transition: 0.3s;
 }
 
 .status-btn.active {
-    color: #0066cc;
-    border-bottom: 2px solid #0066cc;
+    color: #4a90e2;
+    border-bottom: 2px solid #4a90e2;
 }
 
-/* Empty State Styling */
-.empty-vouchers-state {
-    background: white;
-    border-radius: 20px;
-    padding: 60px 20px;
-    text-align: center;
-    color: #333;
-    max-width: 500px;
-    margin: 0 auto;
-}
-
-.empty-icon-container {
-    margin-bottom: 20px;
-}
-
-.empty-vouchers-state h2 {
-    color: #0066cc;
-    font-size: 1.5rem;
-    margin: 10px 0;
-}
-
-.empty-vouchers-state p {
-    color: #444;
-    font-size: 0.95rem;
-    max-width: 250px;
-    margin: 0 auto;
-    line-height: 1.4;
-}
-
-.empty-ticket-icon {
-    width: 150px;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-}
-
-/* Container for the white card area */
+/* Used Voucher Card Styles */
 .used-vouchers-container {
     background: white;
     border-radius: 20px;
     padding: 30px 20px;
-    min-height: 400px; /* Provides the white space seen in image */
+    min-height: 400px;
 }
 
-/* Horizontal card style for the Used tab */
-.horizontal-card {
+.voucher-card {
     display: flex;
     align-items: center;
     background: white;
-    border: 3px solid #b8860b; /* Thicker gold border */
-    border-radius: 25px;
+    border: 3px solid #ddd; /* Neutral border for used state */
+    border-radius: 20px;
     padding: 15px 25px;
     max-width: 500px;
     margin: 0 auto;
+    position: relative;
+    overflow: hidden;
 }
 
-.horizontal-card .voucher-brand {
+/* This makes the card look inactive */
+.used-card {
+    filter: grayscale(1);
+    opacity: 0.7;
+}
+
+.voucher-brand {
     min-width: 80px;
     margin-right: 20px;
 }
 
-.horizontal-card .voucher-info h3 {
+.brand-img {
+    width: 60px;
+    height: auto;
+}
+
+.voucher-info {
+    flex-grow: 1;
+}
+
+.voucher-info h3 {
     font-size: 1.1rem;
-    color: #000;
-    margin-bottom: 5px;
+    color: #333;
+    margin: 0 0 5px 0;
 }
 
-.horizontal-card .price {
-    color: #4a90e2; /* Light blue for the diamond/points */
+.voucher-info .price {
+    color: #4a90e2;
+    font-weight: bold;
+    margin: 0;
 }
 
-/* Status Nav blue line for active state */
-.status-btn.active {
-    color: #0066cc;
-    border-bottom: 2px solid #0066cc;
+/* Optional "USED" Text Stamp */
+.status-stamp {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%) rotate(-10deg);
+    border: 2px solid #999;
+    color: #999;
+    padding: 4px 8px;
+    font-weight: bold;
+    font-size: 0.8rem;
+    border-radius: 4px;
 }
 
 @media (max-width: 600px) {
-    .voucher-grid {
-        grid-template-columns: 1fr;
-    }
+    .web-wrapper { padding: 20px 10px; }
+    .status-btn { padding: 10px 5px; font-size: 0.75rem; }
 }
