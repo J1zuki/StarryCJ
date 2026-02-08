@@ -1,0 +1,146 @@
+:root {
+    --gold: #f1d279;
+    --dark-blue: #001a33;
+    --navy-blue: #003366;
+    --card-bg: #ffffff;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    background-color: #0d1117;
+    background-image: radial-gradient(circle at center, #002b55 0%, #001122 100%);
+    min-height: 100vh;
+    color: white;
+}
+
+.web-wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* Back Button Styling */
+.back-nav {
+    margin-bottom: 20px;
+}
+
+.btn-back {
+    display: inline-flex;
+    align-items: center;
+    color: var(--gold);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: 0.3s;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 8px 15px;
+    border-radius: 5px;
+    border: 1px solid rgba(241, 210, 121, 0.3);
+}
+
+.btn-back:hover {
+    background: rgba(241, 210, 121, 0.1);
+    transform: translateX(-5px);
+}
+
+/* Header */
+.main-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.logo-container img {
+    max-width: 150px;
+    height: auto;
+}
+
+.logo-subtitle {
+    font-size: 1.2rem;
+    color: var(--gold);
+    letter-spacing: 8px;
+    margin-top: 10px;
+    text-transform: uppercase;
+}
+
+/* Dashboard Layout */
+.dashboard-container {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    border: 1px solid rgba(241, 210, 121, 0.3);
+    overflow: hidden;
+}
+
+/* Content Area */
+.reward-content {
+    padding: 30px;
+}
+
+.points-summary {
+    background: white;
+    color: var(--navy-blue);
+    padding: 10px 25px;
+    border-radius: 50px;
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    border: 2px solid var(--gold);
+}
+
+.tracking-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Order Progress Bar */
+.status-progress-container {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin: 30px 0;
+}
+
+.progress-line {
+    position: absolute;
+    top: 20px;
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    background: #555;
+    z-index: 1;
+}
+
+.star-icon {
+    width: 40px;
+    height: 40px;
+    background: white;
+    border: 2px solid #f1d279;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #f1d279;
+    z-index: 2;
+}
+
+.status-step.active .star-icon {
+    background: #f1d279;
+    color: #003366; /* Navy blue star */
+}
+
+/* Underlined Updates */
+.update-item {
+    border-bottom: 1px solid #777;
+    padding: 10px 0;
+    min-height: 20px;
+}
+
+@media (max-width: 600px) {
+    .voucher-grid {
+        grid-template-columns: 1fr;
+    }
+}
