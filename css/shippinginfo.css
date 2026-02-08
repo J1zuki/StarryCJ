@@ -1,14 +1,16 @@
 :root {
     --gold: #f1d279;
-    --dark-blue: #001a33;
     --navy-blue: #003366;
     --card-bg: #ffffff;
+    --text-muted: #666;
+    --accent-green: #32CD32;
+    --button-blue: #6082b6;
 }
 
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    font-family: 'Inter', sans-serif;
     background-color: #0d1117;
     background-image: radial-gradient(circle at center, #002b55 0%, #001122 100%);
     min-height: 100vh;
@@ -21,23 +23,16 @@ body {
     padding: 40px 20px;
 }
 
-/* Back Button Styling */
-.back-nav {
-    margin-bottom: 20px;
-}
-
+/* Navigation & Header */
 .btn-back {
     display: inline-flex;
-    align-items: center;
     color: var(--gold);
     text-decoration: none;
     font-weight: 600;
-    font-size: 0.9rem;
-    transition: 0.3s;
-    background: rgba(255, 255, 255, 0.05);
     padding: 8px 15px;
     border-radius: 5px;
     border: 1px solid rgba(241, 210, 121, 0.3);
+    transition: 0.3s;
 }
 
 .btn-back:hover {
@@ -45,7 +40,6 @@ body {
     transform: translateX(-5px);
 }
 
-/* Header */
 .main-header {
     text-align: center;
     margin-bottom: 40px;
@@ -53,334 +47,121 @@ body {
 
 .logo-container img {
     max-width: 150px;
-    height: auto;
 }
 
 .logo-subtitle {
     font-size: 1.2rem;
     color: var(--gold);
     letter-spacing: 8px;
-    margin-top: 10px;
     text-transform: uppercase;
+    margin-top: 10px;
 }
 
-/* Dashboard Layout */
-/* Remove the transparent box effect */
-.dashboard-container {
-    background: none;
-    border: none;
-    overflow: visible;
-}
-
-/* Style the form inputs */
-.input-field {
-    border: none;
-    border-bottom: 1px solid #ddd;
-    text-align: right;
-    color: #777;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.95rem;
-    width: 60%;
-    outline: none;
-}
-
-.input-field:focus {
-    border-bottom: 1px solid #4a90e2;
-    color: #333;
-}
-
-/* Ensure the card is centered on the page background */
+/* Shipping Card */
 .form-wrapper {
     display: flex;
     justify-content: center;
-    padding: 20px 0;
 }
 
-/* Thicker gold border for the white card as seen in image */
 .shipping-info-card {
-    background: white;
+    background: var(--card-bg);
     border-radius: 25px;
     border: 5px solid var(--gold);
     padding: 40px;
     max-width: 450px;
     width: 100%;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-}
-
-/* Style the checkbox to match the bright green in image */
-input[type="checkbox"] {
-    accent-color: #32CD32; 
-    transform: scale(1.5);
-}
-
-/* Tabs Navigation */
-.reward-tabs {
-    display: flex;
-    border-bottom: 1px solid var(--gold);
-}
-
-.tab-btn {
-    flex: 1;
-    padding: 20px;
-    background: transparent;
-    border: none;
-    color: white;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.tab-btn.active {
-    background: var(--navy-blue);
-    color: var(--gold);
-    font-weight: bold;
-}
-
-.tab-btn:hover:not(.active) {
-    background: rgba(255,255,255,0.1);
-}
-
-/* Content Area */
-.reward-content {
-    padding: 30px;
-}
-
-.points-summary {
-    background: white;
-    color: var(--navy-blue);
-    padding: 10px 25px;
-    border-radius: 50px;
-    display: inline-flex;
-    align-items: center;
-    gap: 15px;
-    font-weight: bold;
-    margin-bottom: 30px;
-    border: 2px solid var(--gold);
-}
-
-/* Grid for Vouchers */
-.voucher-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 20px;
-}
-
-.voucher-card {
-    background: white;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    padding: 20px;
-    border: 2px solid var(--gold);
-    transition: transform 0.2s;
-}
-
-.voucher-card:hover {
-    transform: translateY(-5px);
-}
-
-.voucher-brand {
-    background: transparent;
-    padding: 0;              
-    min-width: 100px;        
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
-
-.brand-img {
-    width: 80%;             
-    height: auto;          
-    display: block;
-    border-radius: 4px;
-}
-
-.voucher-info {
-    flex-grow: 1;
-    padding: 0 15px;
-    color: #333;
-}
-
-.voucher-info h3 {
-    font-size: 1rem;
-    margin: 0 0 5px 0;
-    line-height: 1.2;
-}
-
-.voucher-info .price {
-    color: #0066cc;
-    font-weight: bold;
-    margin: 0;
-}
-
-.redeem-btn {
-    background: var(--navy-blue);
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 0.85rem;
-}
-
-.redeem-btn:hover {
-    background: #004d99;
-}
-/* Sub-navigation inside My Vouchers */
-.voucher-status-nav {
-    display: flex;
-    justify-content: space-around;
-    border-bottom: 1px solid #003366;
-    margin-bottom: 30px;
-    padding-bottom: 5px;
-}
-
-.status-btn {
-    background: none;
-    border: none;
-    color: #555; /* Muted color for inactive */
-    font-size: 0.85rem;
-    font-weight: 600;
-    cursor: pointer;
-    padding: 10px 20px;
-    letter-spacing: 1px;
-}
-
-.status-btn.active {
-    color: #0066cc;
-    border-bottom: 2px solid #0066cc;
-}
-
-/* Empty State Styling */
-.empty-vouchers-state {
-    background: white;
-    border-radius: 20px;
-    padding: 60px 20px;
-    text-align: center;
-    color: #333;
-    max-width: 500px;
-    margin: 0 auto;
-}
-
-.empty-icon-container {
-    margin-bottom: 20px;
-}
-
-.empty-vouchers-state h2 {
-    color: #0066cc;
-    font-size: 1.5rem;
-    margin: 10px 0;
-}
-
-.empty-vouchers-state p {
-    color: #444;
-    font-size: 0.95rem;
-    max-width: 250px;
-    margin: 0 auto;
-    line-height: 1.4;
-}
-
-.empty-ticket-icon {
-    width: 150px;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-}
-/* Container Card */
-.shipping-info-card {
-    background: white;
-    border-radius: 25px;
-    border: 4px solid var(--gold);
-    padding: 30px;
-    max-width: 500px;
-    margin: 0 auto;
-    color: #555;
-    font-family: 'Inter', sans-serif;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    color: #333; /* Dark text for the white card */
 }
 
 .shipping-title {
     color: #4a90e2;
     text-align: center;
     font-size: 1.4rem;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
-/* Info Rows */
+/* Form Inputs */
 .info-row {
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    margin-bottom: 8px;
-    font-size: 0.95rem;
+    margin-bottom: 15px;
 }
 
-.info-row .label {
+.label {
     font-weight: 700;
-    color: #666;
+    color: var(--text-muted);
+    font-size: 0.9rem;
 }
 
-.info-row .value {
-    color: #777;
+.input-field {
+    border: none;
+    border-bottom: 1px solid #ddd;
     text-align: right;
+    color: #333;
+    font-size: 0.95rem;
+    width: 60%;
+    outline: none;
+    background: transparent;
 }
 
-/* Checkbox and Radios */
+.input-field:focus {
+    border-bottom: 1px solid #4a90e2;
+}
+
+/* Controls */
 .save-address {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     margin: 20px 0;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 600;
+}
+
+input[type="checkbox"], 
+input[type="radio"] {
+    accent-color: var(--accent-green);
+    cursor: pointer;
 }
 
 .divider {
     border: 0;
-    border-top: 1px solid #333;
+    border-top: 1px solid #eee;
     margin: 20px 0;
 }
 
 .method-option {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin-bottom: 12px;
-    font-size: 0.9rem;
+    padding: 8px 0;
     font-weight: 600;
-}
-
-/* Custom Radio Buttons */
-input[type="radio"] {
-    accent-color: #90ee90; /* Light green to match image */
-    width: 18px;
-    height: 18px;
-}
-
-/* Continue Button */
-.continue-btn {
-    display: block;
-    width: 80%;
-    margin: 30px auto 0;
-    background: #6082b6;
-    color: white;
-    border: none;
-    padding: 12px;
-    border-radius: 25px;
-    font-size: 1.1rem;
-    font-weight: 700;
+    font-size: 0.9rem;
     cursor: pointer;
 }
 
 .delivery-estimate {
     display: flex;
     justify-content: space-between;
+    margin: 20px 0;
     font-weight: 700;
-    margin-top: 10px;
 }
 
-@media (max-width: 600px) {
-    .voucher-grid {
-        grid-template-columns: 1fr;
-    }
+.continue-btn {
+    display: block;
+    width: 100%;
+    background: var(--button-blue);
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.continue-btn:hover {
+    background: #4a6fa5;
 }
