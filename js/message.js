@@ -1,10 +1,13 @@
-// Get existing chances or start at 0
-let luckyDrawChances = parseInt(localStorage.getItem('luckyChances')) || 0;
-// Check if they have already claimed their one-time share bonus
+// 1. Session-based: Resets to 0 every time the browser/tab is reopened
+let sessionChances = parseInt(sessionStorage.getItem('sessionChances')) || 0;
+
+// 2. Persistent: Remembers FOREVER if they already got the share bonus
 let hasClaimedBonus = localStorage.getItem('hasClaimedShareBonus') === 'true';
 
-// Run this when the page loads to set the name from the URL
 document.addEventListener('DOMContentLoaded', () => {
+    // Display the session-based chances (starts at 0 on fresh reopen)
+    console.log("Current Session Chances:", sessionChances);
+    
     const params = new URLSearchParams(window.location.search);
     const userName = params.get('user');
     if (userName) {
@@ -13,34 +16,31 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function grantExtraChance() {
-    // Logic: Only grant if they haven't claimed it yet
+    // Logic: Only grant if they haven't claimed it in their lifetime on this browser
     if (!hasClaimedBonus) {
-        luckyDrawChances++;
-        hasClaimedBonus = true;
-
-        // Save state to localStorage
-        localStorage.setItem('luckyChances', luckyDrawChances);
+        sessionChances++;
+        hasClaimedBonus = true; // Mark as used forever
+        
+        // Save session data (lost when tab closes)
+        sessionStorage.setItem('sessionChances', sessionChances);
+        
+        // Save persistent data (kept forever)
         localStorage.setItem('hasClaimedShareBonus', 'true');
-
-        alert(`🎉 Thank you for sharing! You've earned 1 extra Lucky Draw chance. Total: ${luckyDrawChances}`);
+        
+        alert(`🎉 One-time bonus earned! Session Total: ${sessionChances}`);
     } else {
-        console.log("Bonus already claimed previously.");
+        alert("Selection received! (Note: You've already used your one-time share bonus).");
     }
 }
 
 function handleImageUpload(input) {
     if (input.files && input.files[0]) {
         const reader = new FileReader();
-        reader.onload = function (e) {
+        reader.onload = function(e) {
             appendImage('You', e.target.result);
-
-            // Trigger the reward logic
-            if (!hasClaimedBonus) {
-                grantExtraChance();
-                setTimeout(() => botReply("That looks great! I've added your one-time bonus chance! 🍀"), 1000);
-            } else {
-                setTimeout(() => botReply("Nice image! (Note: Share bonus is only available once)."), 1000);
-            }
+            
+            // Only triggers if hasClaimedBonus is false
+            grantExtraChance();
         };
         reader.readAsDataURL(input.files[0]);
     }
