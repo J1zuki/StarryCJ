@@ -1,0 +1,198 @@
+:root {
+    --gold: #f1d279;
+    --dark-blue: #001a33;
+    --navy-blue: #003366;
+    --card-bg: #ffffff;
+    --text-muted: #a0a0a0; /* Improved visibility for inactive tabs */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    background-color: #0d1117;
+    background-image: radial-gradient(circle at center, #002b55 0%, #001122 100%);
+    min-height: 100vh;
+    color: white;
+}
+
+.web-wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* Back Button Styling */
+.back-nav {
+    margin-bottom: 20px;
+}
+
+.btn-back {
+    display: inline-flex;
+    align-items: center;
+    color: var(--gold);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: 0.3s;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 8px 15px;
+    border-radius: 5px;
+    border: 1px solid rgba(241, 210, 121, 0.3);
+}
+
+.btn-back:hover {
+    background: rgba(241, 210, 121, 0.1);
+    transform: translateX(-5px);
+}
+
+/* Header */
+.main-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.logo-container img {
+    max-width: 150px;
+    height: auto;
+}
+
+.logo-subtitle {
+    font-size: 1.2rem;
+    color: var(--gold);
+    letter-spacing: 8px;
+    margin-top: 10px;
+    text-transform: uppercase;
+}
+
+/* Dashboard Layout */
+.dashboard-container {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    border: 1px solid rgba(241, 210, 121, 0.3);
+    overflow: hidden;
+}
+
+/* Tabs Navigation */
+.reward-tabs {
+    display: flex;
+    border-bottom: 1px solid var(--gold);
+}
+
+/* Changed to target <a> tags and handle centering */
+.tab-btn {
+    flex: 1;
+    padding: 20px;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none; /* Added for <a> tags */
+    text-align: center;    /* Added for <a> tags */
+}
+
+.tab-btn.active {
+    background: var(--navy-blue);
+    color: var(--gold);
+    font-weight: bold;
+}
+
+.tab-btn:hover:not(.active) {
+    background: rgba(255,255,255,0.1);
+}
+
+/* Content Area */
+.reward-content {
+    padding: 30px;
+}
+
+/* Points Summary */
+.points-summary {
+    background: white;
+    color: var(--navy-blue);
+    padding: 10px 25px;
+    border-radius: 50px;
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    border: 2px solid var(--gold);
+}
+
+/* Sub-navigation inside My Vouchers */
+.voucher-status-nav {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid var(--navy-blue);
+    margin-bottom: 30px;
+    padding-bottom: 0; /* Adjusted for border-bottom alignment */
+}
+
+.status-btn {
+    background: none;
+    border: none;
+    color: var(--text-muted); /* Better visibility */
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 10px 20px;
+    letter-spacing: 1px;
+    text-decoration: none;
+    transition: 0.3s;
+    border-bottom: 3px solid transparent; /* Prevents "jumping" when active */
+}
+
+.status-btn.active {
+    color: var(--gold); /* Switched to gold to match theme better */
+    border-bottom: 3px solid var(--gold);
+}
+
+/* Empty State Styling */
+.empty-vouchers-state {
+    background: white;
+    border-radius: 20px;
+    padding: 60px 20px;
+    text-align: center;
+    color: #333;
+    max-width: 500px;
+    margin: 40px auto; /* Centered with top margin */
+}
+
+.empty-icon-container {
+    margin-bottom: 20px;
+}
+
+.empty-vouchers-state h2 {
+    color: var(--navy-blue);
+    font-size: 1.5rem;
+    margin: 10px 0;
+}
+
+.empty-vouchers-state p {
+    color: #666;
+    font-size: 0.95rem;
+    max-width: 250px;
+    margin: 0 auto;
+    line-height: 1.4;
+}
+
+.empty-ticket-icon {
+    width: 120px; /* Slightly smaller for balance */
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    opacity: 0.8;
+}
+
+@media (max-width: 600px) {
+    .reward-tabs {
+        flex-direction: column;
+    }
+    .status-btn {
+        padding: 10px 5px;
+        font-size: 0.75rem;
+    }
+}

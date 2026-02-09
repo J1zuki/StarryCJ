@@ -1,0 +1,139 @@
+:root {
+    --gold: #f1d279;
+    --dark-blue: #001a33;
+    --navy-blue: #003366;
+    --card-bg: rgba(255, 255, 255, 0.05);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #0d1117;
+    background-image: radial-gradient(circle at center, #002b55 0%, #001122 100%);
+    min-height: 100vh;
+    color: white;
+}
+
+.web-wrapper {
+    max-width: 800px; /* Reduced for better readability on desktop */
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* Header & Nav */
+.btn-back {
+    display: inline-flex;
+    color: var(--gold);
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    border: 1px solid rgba(241, 210, 121, 0.3);
+    transition: 0.3s;
+}
+
+.btn-back:hover {
+    background: rgba(241, 210, 121, 0.1);
+    transform: translateX(-5px);
+}
+
+.main-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.logo-container img {
+    max-width: 150px;
+    height: auto;
+}
+
+.logo-subtitle {
+    font-size: 1.2rem;
+    color: var(--gold);
+    letter-spacing: 4px; 
+    text-transform: uppercase;
+}
+
+/* Tracking Cards */
+.shipping-info-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(241, 210, 121, 0.2);
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 20px;
+}
+
+.order-number a {
+    color: var(--gold);
+    text-decoration: none;
+}
+
+/* Progress Bar Logic */
+.status-progress-container {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin: 40px 0;
+}
+
+.progress-line {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #333;
+    z-index: 1;
+}
+
+.status-step {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80px;
+    font-size: 0.8rem;
+}
+
+.star-icon {
+    width: 40px;
+    height: 40px;
+    background: #111;
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    color: var(--gold);
+}
+
+.status-step.active .star-icon {
+    background: var(--gold);
+    color: var(--navy-blue);
+    box-shadow: 0 0 15px rgba(241, 210, 121, 0.5);
+}
+
+.status-step.active span {
+    color: var(--gold);
+    font-weight: bold;
+}
+
+/* Delivery Info */
+.delivery-estimate {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.delivery-estimate .label {
+    color: #888;
+    margin-right: 10px;
+}
+
+.update-item {
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding: 15px 0;
+    min-height: 20px;
+}

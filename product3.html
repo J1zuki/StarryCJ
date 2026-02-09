@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StarryCJ - Lumina Lace</title>
+    <link rel="stylesheet" href="./css/product3.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="site-wrapper">
+        <header class="main-header">
+            <img src="./images/logo/logoo (1).png" alt="STARRYCJ Logo" class="site-logo">
+        </header>
+
+        <nav class="back-nav">
+            <a href="product.html" class="back-btn">
+                <span class="arrow">←</span> Back
+            </a>
+        </nav>
+
+        <h1 class="page-title">Popular Products</h1>
+
+        <main class="product-container">
+            <div class="product-card">
+                <div class="media-section">
+                    <img src="./images/product/Headphone4.png" alt="Nebula Ethereal" class="main-media">
+                </div>
+
+                <div class="info-section">
+                    <div class="name-heart-row">
+                        <h2 class="product-name">Nebula Ethereal</h2>
+                        <span id="heartBtn" class="heart-icon">♡</span>
+                    </div>
+
+                    <div class="text-block">
+                        <p><span class="label">Description:</span>Hear the unseen. Lose yourself in the atmospheric depth of the Nebula Ethereal. Crafted with a unique translucent shell and color-shifting chrome, this headset is a masterpiece of fluid design. Its expansive sound signature delivers every haunting echo and shimmering high with breathtaking clarity, bringing the beauty of a celestial nursery directly to your ears.</p>
+                    </div>
+
+                    <div class="text-block">
+                        <h3 class="label">Aesthetic Profile:</h3>
+                        <ul class="aesthetic-list">
+                            <li><strong>Body: </strong> Translucent Deep Amethyst revealing internal hardware.</li>
+                            <li><strong>Foundation:</strong> Color-shifting Iridescent Chrome joints.</li>
+                            <li><strong>Accent:</strong> Fiber-optic "filaments" mimicking galactic gases.</li>
+                            <li><strong>Illumination:</strong> Flowing Aura LEDs in pink, purple, and teal.</li>
+                        </ul>
+                    </div>
+
+                    <button class="buy-button">Buy</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const heart = document.getElementById('heartBtn');
+        heart.addEventListener('click', () => {
+            heart.classList.toggle('active');
+            heart.innerHTML = heart.classList.contains('active') ? '❤️' : '♡';
+            heart.style.color = heart.classList.contains('active') ? '#e74c3c' : '#333';
+        });
+    </script>
+</body>
+</html>

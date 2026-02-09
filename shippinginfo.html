@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StarryCJ - Shipping Information</title>
+    <link rel="stylesheet" href="./css/shippinginfo.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="web-wrapper">
+        <nav class="back-nav">
+            <a href="home.html" class="btn-back">← Back to Shop</a>
+        </nav>
+
+        <header class="main-header">
+            <div class="logo-container">
+                <a href="home.html">
+                    <img src="./images/logo/logoo (1).png" alt="STARRYCJ">
+                </a>
+                <div class="logo-subtitle">Shipping Information</div>
+            </div>
+        </header>
+
+        <section class="form-wrapper">
+            <form class="shipping-info-card">
+                <h2 class="shipping-title">Shipping Address</h2>
+
+                <div class="info-section">
+                    <div class="info-row">
+                        <label for="full-name" class="label">Full Name</label>
+                        <input type="text" id="full-name" class="input-field" value="Jonny Tan">
+                    </div>
+                    <div class="info-row">
+                        <label for="address" class="label">Street Address</label>
+                        <input type="text" id="address" class="input-field" value="BLK 675 Yishun Drive 32">
+                    </div>
+                    <div class="info-row">
+                        <label for="apt" class="label">Apartment/Suite</label>
+                        <input type="text" id="apt" class="input-field" value="HDB">
+                    </div>
+                    <div class="info-row">
+                        <label for="state" class="label">State/Province</label>
+                        <input type="text" id="state" class="input-field" value="City">
+                    </div>
+                    <div class="info-row">
+                        <label for="postal" class="label">Postal Code</label>
+                        <input type="text" id="postal" class="input-field" value="840675">
+                    </div>
+                    <div class="info-row">
+                        <label for="country" class="label">Country</label>
+                        <input type="text" id="country" class="input-field" value="Singapore">
+                    </div>
+                </div>
+
+                <div class="save-address">
+                    <input type="checkbox" id="save-info" checked>
+                    <label for="save-info">Save this address for future purchases</label>
+                </div>
+
+                <hr class="divider">
+
+                <h2 class="shipping-title">Shipping Method</h2>
+                <div class="method-section">
+                    <label class="method-option">
+                        <span>Express (1-2 days) - $4.00</span>
+                        <input type="radio" name="shipping" checked>
+                    </label>
+                    <label class="method-option">
+                        <span>Standard (3-7 days) - $2.50</span>
+                        <input type="radio" name="shipping">
+                    </label>
+                    <label class="method-option">
+                        <span>Pick-Up (Free)</span>
+                        <input type="radio" name="shipping">
+                    </label>
+                </div>
+
+                <hr class="divider">
+
+                <div class="delivery-estimate">
+                    <span class="label">Estimated Delivery</span>
+                    <span class="value">Sept 19 - Sept 25, 2026</span>
+                </div>
+
+                <button type="submit" class="continue-btn">Continue Payment</button>
+            </form>
+        </section>
+    </div>
+
+</body>
+</html>
