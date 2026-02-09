@@ -72,52 +72,72 @@ body {
     overflow: hidden;
 }
 
-.lucky-draw-container {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    align-items: center;
-    margin-top: 20px;
-}
-
-.draw-card, .share-card {
-    background: white;
-    border: 4px solid var(--gold);
-    border-radius: 20px;
-    padding: 30px;
-    text-align: center;
+/* Modal Backdrop */
+.modal-overlay {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    max-width: 450px;
-    color: var(--navy-blue);
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Dim the background */
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
 }
 
-.jar-wrapper {
+/* The White Card */
+.modal-content {
+    background: white;
+    width: 90%;
+    max-width: 400px;
+    padding: 40px 20px;
+    border-radius: 30px;
+    border: 5px solid var(--gold);
+    text-align: center;
     position: relative;
-    height: 200px;
+    animation: popIn 0.3s ease-out;
+}
+
+/* Elements inside the card */
+.win-ticket-icon img {
+    width: 150px;
     margin-bottom: 20px;
 }
 
-.jar-image {
-    width: 200px;
-    height: auto; 
-    display: block;
-    margin: 0 auto; 
+.win-title {
+    color: #004d80; /* Darker blue from your image */
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    line-height: 1.2;
 }
 
-.main-draw-btn, .share-action-btn {
-    background: #6284ad; 
+.win-announcement {
+    color: #000;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.win-subtext {
+    color: #6284ad;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-bottom: 30px;
+}
+
+.modal-close-btn {
+    background: #6284ad;
     color: white;
     border: none;
-    padding: 15px 40px;
+    padding: 12px 60px;
     border-radius: 50px;
     font-size: 1.2rem;
     font-weight: bold;
     cursor: pointer;
-    text-transform: uppercase;
 }
 
-.chance-text {
-    color: #87b5ff;
-    font-weight: 600;
-    margin-top: 15px;
+/* Smooth pop-up animation */
+@keyframes popIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
 }

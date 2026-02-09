@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StarryCJ - Lucky Draw Winner</title>
+    <link rel="stylesheet" href="./css/win.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="web-wrapper">
+        <nav class="back-nav">
+            <a href="home.html" class="btn-back">
+                ← Back to Shop
+            </a>
+        </nav>
+
+        <header class="main-header">
+            <div class="logo-container">
+                <a href="home.html">
+                    <img src="./images/logo/logoo (1).png" alt="STARRYCJ">
+                </a>
+                <div class="logo-subtitle">Lucky Draw</div>
+            </div>
+        </header>
+
+        <main class="dashboard-container">
+            <div style="text-align: center; padding: 50px;">
+                <button id="spinBtn" class="modal-close-btn" style="background: var(--gold); color: #000;">Try Your
+                    Luck!</button>
+            </div>
+
+            <div id="winModal" class="modal-overlay">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="win-ticket-icon">
+                            <img src="./images/ticket/ticket.png" alt="starryCJ Ticket">
+                        </div>
+
+                        <h2 class="win-title">Free Delivery with<br>min of $100</h2>
+
+                        <p class="win-announcement">
+                            <strong>Congratulations! You have won today's reward!</strong>
+                        </p>
+
+                        <p class="win-subtext">
+                            Come back to spin more vouchers<br>to be used in our store!
+                        </p>
+
+                        <button id="closeModal" class="modal-close-btn">Close</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const modal = document.getElementById('winModal');
+        const openBtn = document.getElementById('spinBtn');
+        const closeBtn = document.getElementById('closeModal');
+
+        // Show modal
+        openBtn.onclick = function () {
+            modal.style.display = "flex";
+        }
+
+        // Hide modal
+        closeBtn.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        // Close if clicking outside the white card
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+
+</html>
