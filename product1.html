@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,60 +8,93 @@
     <link rel="stylesheet" href="./css/product1.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
-<body>
 
+<body>
     <div class="site-wrapper">
         <header class="main-header">
-            <img src="./images/logo/logoo (1).png" alt="STARRYCJ Logo" class="site-logo">
+            <img src="./images/logo/logoo (1).png" class="site-logo">
         </header>
 
         <nav class="back-nav">
-            <a href="product.html" class="back-btn">
-                <span class="arrow">←</span> Back
-            </a>
+            <a href="product.html" class="back-btn">←</a>
         </nav>
 
         <h1 class="page-title">Popular Products</h1>
 
         <main class="product-container">
             <div class="product-card">
+
                 <div class="media-section">
-                    <video src="./images/product/bowHeadsets.mp4" autoplay muted loop playsinline class="main-media"></video>
+                    <video class="main-media" autoplay muted loop playsinline>
+                        <source src="./images/product/bowHeadsets.mp4" type="video/mp4">
+                    </video>
                 </div>
 
                 <div class="info-section">
+
                     <div class="name-heart-row">
                         <h2 class="product-name">Lumina Lace</h2>
                         <span id="heartBtn" class="heart-icon">♡</span>
                     </div>
 
                     <div class="text-block">
-                        <p><span class="label">Description:</span>Grounded in the star. Navigate your audio landscape with the Blue Polaris. Built for stability and brilliance, this headset combines a commanding blue finish with a solid gold star foundation. It is a beacon of style and performance, keeping you anchored while your sound soars through the galaxy.</p>
+                        <p>
+                            <span class="label">Description:</span>
+                            Ethereal sound, woven in light. Inspired by a celestial tapestry of night sky, Lumina Lace
+                            is the cosmic sister of the StarryCJ collection. This ultra-lightweight headset features a
+                            layered royal blue bow accented with a heart-shaped gold star anchor and shimmering crystal
+                            lace trim. Designed to cradle your ears in comfort while elevating your audio experience, it
+                            strikes the perfect balance between elegance, high-contrast aesthetics, and practicality.
+                        </p>
                     </div>
 
                     <div class="text-block">
                         <h3 class="label">Aesthetic Profile:</h3>
                         <ul class="aesthetic-list">
-                            <li><strong>Body: </strong> Matte Royal Blue with a velvety, anti-fingerprint finish.</li>
-                            <li><strong>Foundation:</strong> A weighted, geometric star in Champagne Gold serves as the structural anchor.</li>
-                            <li><strong>Accent:</strong> Laser-etched constellation charts in Golden Yellow along the headband.</li>
-                            <li><strong>Illumination:</strong> A soft, "breathing" LED pulse behind the gold star.</li>
+                            <li><strong>The Bow:</strong> Royal blue satin with a champagne gold star buckle and bow
+                                charm in the middle.</li>
+                            <li><strong>Body:</strong> Star-cut foam cushions with a lightly weighted gold crescent.
+                            </li>
+                            <li><strong>Foundation:</strong> Prestigious, energetic, and sophisticated cosmic jewelry
+                                for your setup.</li>
                         </ul>
                     </div>
 
-                    <button class="buy-button">Buy</button>
+                    <a href="cart.html" class="buy-button">Buy</a>
+
                 </div>
             </div>
         </main>
     </div>
 
     <script>
-        const heart = document.getElementById('heartBtn');
-        heart.addEventListener('click', () => {
-            heart.classList.toggle('active');
-            heart.innerHTML = heart.classList.contains('active') ? '❤️' : '♡';
-            heart.style.color = heart.classList.contains('active') ? '#e74c3c' : '#333';
+        const heartBtn = document.getElementById("heartBtn");
+
+        heartBtn.addEventListener("click", e => {
+            heartBtn.classList.toggle("active");
+            const liked = heartBtn.classList.contains("active");
+
+            heartBtn.innerHTML = liked ? "❤️" : "♡";
+            heartBtn.style.color = liked ? "#e74c3c" : "#333";
+
+            if (liked) burstHearts(e.clientX, e.clientY);
         });
+
+        function burstHearts(x, y) {
+            for (let i = 0; i < 8; i++) {
+                const heart = document.createElement("div");
+                heart.className = "heart-burst";
+                heart.innerHTML = "❤️";
+
+                heart.style.left = x + (Math.random() * 40 - 20) + "px";
+                heart.style.top = y + "px";
+
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 1300);
+            }
+        }
     </script>
+
 </body>
+
 </html>
