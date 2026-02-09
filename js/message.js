@@ -1,35 +1,53 @@
-// Persistent: Check if they already claimed the bonus
-let hasClaimedBonus = localStorage.getItem('hasClaimedShareBonus') === 'true';
+function sendTextMessage() {
+    const input = document.getElementById('message-text');
+    if (!input) return; // Guard clause if input is missing
+
+    const message = input.value.trim();
+
+    if (message !== "") {
+        // Use a fallback if appendMessage isn't defined yet
+        if (typeof appendMessage === "function") {
+            appendMessage('You', message);
+        } else {
+            console.log("You:", message);
+        }
+
+        if (message.toLowerCase().includes("lucky draw")) {
+            grantExtraChance(); 
+            safeBotReply("Checking your eligibility... 🍀", 1000);
+        } else {
+            safeBotReply("Thanks for the message!", 1200);
+        }
+
+        input.value = "";
+    }
+}
+
+// Helper to prevent "botReply is not defined" errors
+function safeBotReply(text, delay) {
+    setTimeout(() => {
+        if (typeof botReply === "function") {
+            botReply(text);
+        } else {
+            console.log("Bot:", text);
+        }
+    }, delay);
+}
 
 function grantExtraChance() {
-    // 1. Check if they already used their one-time bonus
-    if (hasClaimedBonus) {
-        alert("You've already used your one-time share bonus!");
-        return;
+    const hasClaimed = localStorage.getItem('hasClaimedShareBonus') === 'true';
+
+    if (hasClaimed) {
+        safeBotReply("You've already claimed your one-time bonus chance!", 1500);
+        return; 
     }
 
-    // 2. Grant the chance
     let currentChances = parseInt(localStorage.getItem('drawChances')) || 0;
     currentChances += 1;
     
-    // 3. Save to storage
     localStorage.setItem('drawChances', currentChances);
-    localStorage.setItem('hasClaimedShareBonus', 'true'); // Mark as used forever
-    localStorage.removeItem('isGameOver'); // Unfreeze so they can draw again!
+    localStorage.setItem('hasClaimedShareBonus', 'true');
+    localStorage.setItem('isGameOver', 'false'); 
 
-    hasClaimedBonus = true; 
-    alert("🎉 Image shared! You've earned 1 extra Lucky Draw chance!");
-}
-
-function handleImageUpload(input) {
-    if (input.files && input.files[0]) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            appendImage('You', e.target.result);
-            
-            // Trigger bonus logic
-            grantExtraChance();
-        };
-        reader.readAsDataURL(input.files[0]);
-    }
+    safeBotReply("🎉 One-time bonus earned! Go back to the Lucky Draw page to use it!", 1500);
 }

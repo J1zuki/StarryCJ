@@ -17,34 +17,34 @@ const members = [
 function renderMembers() {
     const allList = document.getElementById('all-friends-list');
     const nearbyList = document.getElementById('nearby-members-list');
+    
+    if (!allList || !nearbyList) return;
+
+    let allHTML = "";
+    let nearbyHTML = "";
 
     members.forEach(member => {
-        const memberHTML = `
+        const html = `
             <div class="member-card">
                 <img src="${member.avatar}" alt="${member.name}" class="member-avatar">
                 <div class="member-info">
                     <div class="member-name">${member.name}</div>
                     <button class="message-btn" onclick="openChat('${member.name}')">Message</button>
                 </div>
-                <div class="action-icons">
-                    <span class="icon-plus">⊕</span>
-                    <span class="icon-minus">⊖</span>
-                </div>
-            </div>
-        `;
-
-        if (member.group === 'all') {
-            allList.innerHTML += memberHTML;
-        } else {
-            nearbyList.innerHTML += memberHTML;
-        }
+            </div>`;
+        
+        if (member.group === 'all') allHTML += html;
+        else nearbyHTML += html;
     });
-}
 
+    allList.innerHTML = allHTML;
+    nearbyList.innerHTML = nearbyHTML;
+}
 function openChat(name) {
     // Redirect to the message page with the name as a parameter
     window.location.href = `message.html?user=${encodeURIComponent(name)}`;
 }
+
 
 // Initialize on load
 document.addEventListener('DOMContentLoaded', renderMembers);
