@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StarryCJ - Lucky Draw</title>
+    <link rel="stylesheet" href="./css/luckydraw.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="web-wrapper">
+        <nav class="back-nav">
+            <a href="home.html" class="btn-back">
+                ← Back to Shop
+            </a>
+        </nav>
+
+        <header class="main-header">
+            <div class="logo-container">
+                <a href="home.html">
+                    <img src="./images/logo/logoo (1).png" alt="STARRYCJ">
+                </a>
+                <div class="logo-subtitle">Lucky Draw</div>
+            </div>
+        </header>
+
+        <section class="dashboard-container">
+
+            <div class="lucky-draw-container">
+                <div class="draw-card">
+                    <div class="jar-wrapper">
+                        <img src="./images/ticket/JAR.png" alt="Jar" class="jar-image">
+                        <div class="tickets-animation" id="ticketJar">
+                        </div>
+                    </div>
+
+                    <button id="drawBtn" class="main-draw-btn">PICK A TICKET!</button>
+                    <p class="chance-text">Your chances: <span id="chanceCount">3</span> remaining daily pick.</p>
+                </div>
+
+                <div class="share-card">
+                    <h3>SHARE IT WITH YOUR BUDDIES!!</h3>
+                    <p>You and your buddies can earn and share vouchers together to spend.</p>
+                    <button id="shareBtn" class="share-action-btn">CLICK HERE TO SHARE!</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+</body>
+
+</html>
