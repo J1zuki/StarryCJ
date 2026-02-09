@@ -28,16 +28,11 @@
         </header>
 
         <main class="dashboard-container">
-            <div style="text-align: center; padding: 50px;">
-                <button id="spinBtn" class="modal-close-btn" style="background: var(--gold); color: #000;">Try Your
-                    Luck!</button>
-            </div>
-
             <div id="winModal" class="modal-overlay">
                 <div class="modal-content">
                     <div class="modal-body">
                         <div class="win-ticket-icon">
-                            <img src="./images/ticket/ticket.png" alt="starryCJ Ticket">
+                            <img src="./images/ticket/ticket.png" alt="Reward Ticket">
                         </div>
 
                         <h2 class="win-title">Free Delivery with<br>min of $100</h2>
@@ -50,34 +45,24 @@
                             Come back to spin more vouchers<br>to be used in our store!
                         </p>
 
-                        <button id="closeModal" class="modal-close-btn">Close</button>
+                        <a href="luckydraw.html" id="closeModal" class="modal-close-btn">Close</a>
                     </div>
                 </div>
             </div>
-        </main>
     </div>
 
     <script>
-        const modal = document.getElementById('winModal');
-        const openBtn = document.getElementById('spinBtn');
-        const closeBtn = document.getElementById('closeModal');
+        document.addEventListener('DOMContentLoaded', () => {
+            const modal = document.getElementById('winModal');
+            const closeBtn = document.getElementById('closeModal');
 
-        // Show modal
-        openBtn.onclick = function () {
-            modal.style.display = "flex";
-        }
+            modal.style.display = 'flex';
 
-        // Hide modal
-        closeBtn.onclick = function () {
-            modal.style.display = "none";
-        }
-
-        // Close if clicking outside the white card
-        window.onclick = function (event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
+            // When they click close, the href="luckydraw.html" handles the move
+            closeBtn.onclick = () => {
+                modal.style.display = 'none';
+            };
+        });
     </script>
 </body>
 
