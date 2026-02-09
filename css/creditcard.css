@@ -1,0 +1,176 @@
+:root {
+    --gold: #f1d279;
+    --blue: #6082b6;
+    --dark-bg: #0d1117;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: radial-gradient(circle at center, #002b55 0%, #001122 100%);
+    color: white;
+}
+
+/* =========================
+   PAGE WRAPPER (WEB)
+   ========================= */
+.web-wrapper {
+    max-width: 1100px;           /* 🔥 WEB WIDTH */
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+}
+
+/* BACK BUTTON */
+.btn-back {
+    display: inline-flex;
+    color: var(--gold);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 15px;
+    border-radius: 5px;
+    border: 1px solid rgba(241, 210, 121, 0.3);
+    transition: 0.3s;
+    margin-bottom: 20px;
+}
+
+.btn-back:hover {
+    background: rgba(241, 210, 121, 0.1);
+    transform: translateX(-5px);
+}
+
+/* =========================
+   HEADER
+   ========================= */
+.main-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.main-header img {
+    max-width: 180px;
+}
+
+.subtitle {
+    letter-spacing: 6px;
+    color: var(--gold);
+    margin-top: 10px;
+    font-size: 1rem;
+}
+
+/* =========================
+   PAYMENT WRAPPER
+   ========================= */
+.payment-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+}
+
+/* =========================
+   CARD + LOADING BOX
+   ========================= */
+.card-form,
+.loading-box {
+    background: white;
+    color: #333;
+    width: 100%;
+    max-width: 460px;        /* 🔥 WEB CARD SIZE */
+    padding: 30px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
+}
+
+.card-form h3 {
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+}
+
+/* INPUTS */
+.card-form input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 0.95rem;
+}
+
+.row {
+    display: flex;
+    gap: 12px;
+}
+
+/* PAY BUTTON */
+#payBtn {
+    width: 100%;
+    margin-top: 20px;
+    padding: 12px;
+    border: none;
+    border-radius: 24px;
+    background: var(--blue);
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#payBtn:hover {
+    opacity: 0.85;
+    transform: translateY(-1px);
+}
+
+/* =========================
+   LOADING STATE
+   ========================= */
+.loading-box p {
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+/* LOADER */
+.loader {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 10px solid #dbe4ee;
+    border-top: 10px solid var(--blue);
+    animation: spin 1s linear infinite;
+    margin: 25px auto 0;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+/* =========================
+   RESPONSIVE (MOBILE)
+   ========================= */
+@media (max-width: 600px) {
+    .web-wrapper {
+        padding: 30px 15px 60px;
+    }
+
+    .card-form,
+    .loading-box {
+        max-width: 100%;
+        padding: 22px;
+    }
+
+    .row {
+        flex-direction: column;
+    }
+}

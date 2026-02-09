@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>STARRYCJ – Credit Card Payment</title>
+
+    <link rel="stylesheet" href="./css/creditcard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="web-wrapper">
+        <nav class="back-nav">
+            <a href="cart.html" class="btn-back">←</a>
+        </nav>
+
+        <header class="main-header">
+            <div class="logo-container">
+                <a href="home.html">
+                    <img src="./images/logo/logoo (1).png" alt="STARRYCJ">
+                </a>
+            </div>
+        </header>
+
+        <!-- PAYMENT SECTION -->
+        <main class="payment-wrapper">
+            <!-- CARD FORM -->
+            <div class="card-form" id="cardForm">
+                <h3>Credit Card</h3>
+
+                <input type="text" id="cardNumber" placeholder="Card Number">
+
+                <div class="row">
+                    <input type="text" id="expiry" placeholder="MM/YY">
+                    <input type="text" id="cvc" placeholder="CVC">
+                </div>
+
+                <input type="text" id="cardName" placeholder="Name on Card">
+
+                <button id="payBtn">Pay</button>
+            </div>
+
+            <!-- LOADING SCREEN -->
+            <div class="loading-box hidden" id="loadingBox">
+                <p>Loading...</p>
+                <div class="loader"></div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- JS -->
+    <script>
+        const payBtn = document.getElementById("payBtn");
+        const cardForm = document.getElementById("cardForm");
+        const loadingBox = document.getElementById("loadingBox");
+
+        payBtn.addEventListener("click", () => {
+
+            const cardNumber = document.getElementById("cardNumber").value.trim();
+            const expiry = document.getElementById("expiry").value.trim();
+            const cvc = document.getElementById("cvc").value.trim();
+            const name = document.getElementById("cardName").value.trim();
+
+            // Validation only (NO saving)
+            if (!cardNumber || !expiry || !cvc || !name) {
+                alert("Please fill in all fields");
+                return;
+            }
+
+            // Switch UI
+            cardForm.classList.add("hidden");
+            loadingBox.classList.remove("hidden");
+
+            // Simulated payment delay
+            setTimeout(() => {
+                window.location.href = "success.html";
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
