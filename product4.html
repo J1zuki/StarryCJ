@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StarryCJ - Lumina Lace</title>
-    <link rel="stylesheet" href="./css/product1.css">
+    <title>StarryCJ - Solar Flare</title>
+    <link rel="stylesheet" href="./css/product4.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -16,7 +16,7 @@
 
         <nav class="back-nav">
             <a href="product.html" class="back-btn">
-                <span class="arrow">←</span> Back
+                <span class="arrow">←</span>
             </a>
         </nav>
 
@@ -48,19 +48,38 @@
                         </ul>
                     </div>
 
-                    <button class="buy-button">Buy</button>
+                    <a href="cart.html" class="buy-button">Buy</a>
                 </div>
             </div>
         </main>
     </div>
 
     <script>
-        const heart = document.getElementById('heartBtn');
-        heart.addEventListener('click', () => {
-            heart.classList.toggle('active');
-            heart.innerHTML = heart.classList.contains('active') ? '❤️' : '♡';
-            heart.style.color = heart.classList.contains('active') ? '#e74c3c' : '#333';
+        const heartBtn = document.getElementById("heartBtn");
+
+        heartBtn.addEventListener("click", e => {
+            heartBtn.classList.toggle("active");
+            const liked = heartBtn.classList.contains("active");
+
+            heartBtn.innerHTML = liked ? "❤️" : "♡";
+            heartBtn.style.color = liked ? "#e74c3c" : "#333";
+
+            if (liked) burstHearts(e.clientX, e.clientY);
         });
+
+        function burstHearts(x, y) {
+            for (let i = 0; i < 8; i++) {
+                const heart = document.createElement("div");
+                heart.className = "heart-burst";
+                heart.innerHTML = "❤️";
+
+                heart.style.left = x + (Math.random() * 40 - 20) + "px";
+                heart.style.top = y + "px";
+
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 1300);
+            }
+        }
     </script>
 </body>
 </html>

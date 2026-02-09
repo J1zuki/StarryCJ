@@ -1,114 +1,266 @@
-/* General Setup */
-body, html {
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    font-family: 'Inter', sans-serif;
-    background: #004d85;
-    background-size: cover;
+* {
+  box-sizing: border-box;
 }
+
+/* ======================
+   GLOBAL BACKGROUND
+====================== */
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+
+  background:
+    radial-gradient(circle at top, #0a3a66 0%, transparent 55%),
+    linear-gradient(180deg, #021b33 0%, #042f57 45%, #021524 100%);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(rgba(255,255,255,0.03), transparent 60%);
+  pointer-events: none;
+}
+
+/* ======================
+   WRAPPER
+====================== */
 
 .site-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 40px 80px;
 }
 
-/* Logo Header */
+/* ======================
+   HEADER
+====================== */
+
 .main-header {
-    margin-bottom: 20px; /* Space between logo and back button */
+  margin-bottom: 20px;
 }
 
 .site-logo {
-    height: 100px;
+  height: 120px;
 }
 
-/* Back Navigation - Now positioned below Logo */
+/* ======================
+   BACK BUTTON
+====================== */
+
 .back-nav {
-    width: 100%;
-    max-width: 500px; /* Matches the width of your product card */
-    margin-bottom: 25px; /* Space before the "Popular Products" title */
-    display: flex;
-    justify-content: flex-start;
+  width: 100%;
+  max-width: 1100px;
+  margin: 10px 0 30px;
 }
 
 .back-btn {
-    text-decoration: none;
-    color: #ffffff;
-    font-weight: 600;
-    font-size: 0.95rem;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: all 0.3s ease;
-    padding: 8px 16px;
-    border-radius: 20px;
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffd56b;
+  text-decoration: none;
+  background: rgba(255,255,255,0.12);
+  padding: 10px 22px;
+  border-radius: 24px;
+  font-weight: 600;
+  transition: 0.3s ease;
+  backdrop-filter: blur(6px);
 }
 
 .back-btn:hover {
-    background: rgba(255, 255, 255, 0.25);
-    color: #f1c40f;
-    transform: translateX(-3px);
+  background: rgba(255,255,255,0.25);
+  transform: translateX(-4px);
 }
 
-/* Page Title */
+/* ======================
+   TITLE
+====================== */
+
 .page-title {
-    color: #ffffff;
-    font-size: 2.2rem;
-    font-weight: 700;
-    margin: 0 0 30px 0; /* Space below title */
-    text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+  color: white;
+  font-size: 2.3rem;
+  margin-bottom: 40px;
+  letter-spacing: 1px;
+  text-shadow: 0 6px 12px rgba(0,0,0,0.5);
 }
 
-/* Product Container & Card */
+/* ======================
+   PRODUCT CARD (DESKTOP)
+====================== */
+
 .product-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .product-card {
-    background: #ffffff;
-    width: 100%;
-    max-width: 500px; 
-    border-radius: 30px;
-    border: 4px solid #f1c40f;
-    overflow: hidden;
-    padding: 25px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+  background: white;
+  width: 100%;
+  max-width: 1100px;
+  border-radius: 30px;
+  padding: 38px;
+  border: 4px solid #f1c40f;
+  box-shadow: 0 20px 45px rgba(0,0,0,0.55);
+
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 42px;
+  align-items: center;
 }
+
+/* ======================
+   MEDIA
+====================== */
 
 .main-media {
-    width: 100%;
-    border-radius: 20px;
-    margin-bottom: 20px;
+  width: 100%;
+  border-radius: 24px;
 }
 
-/* Text & Buttons */
+/* ======================
+   INFO
+====================== */
+
+.info-section {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.name-heart-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .product-name {
-    color: #4b79a1;
-    font-size: 1.8rem;
-    margin: 0;
+  color: #4b79a1;
+  font-size: 2.3rem;
+  font-weight: 700;
+}
+
+.heart-icon {
+  font-size: 1.9rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.heart-icon:hover {
+  transform: scale(1.25);
+}
+
+/* ======================
+   TEXT
+====================== */
+
+.text-block p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #333;
 }
 
 .label {
-    color: #0056b3;
-    font-weight: 700;
+  color: #0056b3;
+  font-weight: 700;
+  font-size: 1.05rem;
 }
 
+/* ======================
+   AESTHETIC PROFILE
+====================== */
+
+.aesthetic-list {
+  padding-left: 20px;
+  margin-top: 6px;
+}
+
+.aesthetic-list li {
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+/* ======================
+   BUY BUTTON
+====================== */
+
 .buy-button {
-    width: 100%;
-    background: #5d8aa8;
-    color: white;
-    border: none;
-    padding: 16px;
-    border-radius: 50px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 15px;
+  margin-top: 16px;
+  width: 100%;
+  background: linear-gradient(135deg, #5d8aa8, #3b6c8f);
+  color: white;
+  border: none;
+  padding: 18px;
+  border-radius: 40px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s ease;
+
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+.buy-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.35);
+}
+
+/* ======================
+   HEART BURST
+====================== */
+
+.heart-burst {
+  position: fixed;
+  font-size: 1.6rem;
+  color: #e74c3c;
+  animation: floatUp 1.3s ease-out forwards;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+@keyframes floatUp {
+  from {
+    transform: translateY(0) scale(0.8);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-140px) scale(1.4);
+    opacity: 0;
+  }
+}
+
+
+/* ======================
+   RESPONSIVE MOBILE
+====================== */
+
+@media (max-width: 900px) {
+
+  .site-wrapper {
+    padding: 30px 16px 60px;
+  }
+
+  .site-logo {
+    height: 100px;
+  }
+
+  .page-title {
+    font-size: 1.9rem;
+  }
+
+  .product-card {
+    grid-template-columns: 1fr;
+    padding: 24px;
+  }
+
+  .product-name {
+    font-size: 1.7rem;
+  }
+
+  .text-block p {
+    font-size: 0.95rem;
+  }
 }

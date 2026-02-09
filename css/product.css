@@ -62,10 +62,13 @@ body {
 /* SECTIONS */
 .section-title {
     text-align: center;
-    color: var(--starry-gold); 
+    color: var(--white);
     margin-bottom: 30px;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
+    font-size: 2.8rem;
+    font-weight: 700;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
 }
 
 /* PRODUCT GRID STYLING */
@@ -139,6 +142,7 @@ body {
 }
 
 .buy-btn {
+    display: inline-block; /* IMPORTANT for <a> */
     background: var(--starry-blue);
     color: white;
     border: 1px solid var(--starry-light-blue);
@@ -147,9 +151,79 @@ body {
     cursor: pointer;
     font-weight: bold;
     transition: 0.3s;
+    text-decoration: none; /* removes underline */
+    text-align: center;
 }
 
 .buy-btn:hover {
     background: var(--starry-gold);
     color: #05060a;
+}
+
+/* FOOTER */
+.site-footer {
+  background: linear-gradient(90deg, #015085, #015085);
+  color: white;
+  padding: 50px 20px 20px;
+  margin-top: 80px;
+}
+
+.footer-links a,
+.footer-brand p,
+.footer-bottom {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.footer-links a:hover {
+  color: #ffffff;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.footer-brand img {
+  height: 150px;
+  margin-bottom: 10px;
+}
+
+.footer-brand p {
+  font-size: 14px;
+  color: #cbd5e1;
+}
+
+.footer-links h4 {
+  margin-bottom: 12px;
+  font-size: 16px;
+}
+
+.footer-links a {
+  display: block;
+  margin-bottom: 8px;
+  color: #cbd5e1;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.footer-links a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  font-size: 13px;
+  color: #a0aec0;
 }
