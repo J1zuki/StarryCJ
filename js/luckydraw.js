@@ -1,12 +1,23 @@
-// 1. Centralized State Management
+// --- CONFIGURATION ---
+const IS_TESTING_MODE = true; // Set to false when you go live!
+
+// 1. Centralized State Management (Using localStorage)
 function getGameState() {
-    const storedChances = sessionStorage.getItem('drawChances');
-    const isGameOver = sessionStorage.getItem('isGameOver') === 'true';
+    // If testing, we force a reset of the specific keys we care about
+    if (IS_TESTING_MODE && !sessionStorage.getItem('resetDone')) {
+        localStorage.setItem('drawChances', '1');
+        localStorage.setItem('isGameOver', 'false');
+        localStorage.removeItem('hasClaimedShareBonus');
+        sessionStorage.setItem('resetDone', 'true'); // Prevents infinite reset loop during session
+    }
+
+    const storedChances = localStorage.getItem('drawChances');
+    const isGameOver = localStorage.getItem('isGameOver') === 'true';
     
-    // Default state for a brand new session
+    // Default state for a brand new user
     if (storedChances === null) {
-        sessionStorage.setItem('drawChances', 1);
-        sessionStorage.setItem('isGameOver', 'false');
+        localStorage.setItem('drawChances', 1);
+        localStorage.setItem('isGameOver', 'false');
         return { chances: 1, isGameOver: false };
     }
     
@@ -23,18 +34,22 @@ const chanceDisplay = document.getElementById('chanceCount');
 function updateUI() {
     const state = getGameState();
     
-    if (chanceDisplay) chanceDisplay.innerText = state.chances;
+    if (chanceDisplay) {
+        // Correct grammar: "pick" if 1, "picks" if 0 or 2+
+        const plural = state.chances === 1 ? "pick" : "picks";
+        chanceDisplay.innerText = `${state.chances} remaining daily ${plural}.`;
+    }
     
     if (state.isGameOver || state.chances <= 0) {
         drawBtn.innerText = state.isGameOver ? "DRAW COMPLETED" : "NO CHANCES LEFT";
+        drawBtn.classList.add('disabled-btn'); // Best to use a CSS class
         drawBtn.style.backgroundColor = "#ccc";
         drawBtn.style.pointerEvents = "none";
-        drawBtn.style.cursor = "not-allowed";
     } else {
         drawBtn.innerText = "PICK A TICKET!";
+        drawBtn.classList.remove('disabled-btn');
         drawBtn.style.backgroundColor = ""; 
         drawBtn.style.pointerEvents = "auto";
-        drawBtn.style.cursor = "pointer";
     }
 }
 
@@ -45,14 +60,14 @@ drawBtn.addEventListener('click', (e) => {
     if (state.chances > 0) {
         state.chances--;
         
-        // Save new state
-        sessionStorage.setItem('drawChances', state.chances);
+        // Save new state to localStorage
+        localStorage.setItem('drawChances', state.chances);
+        
+        // Only set game over if they actually have 0 chances
         if (state.chances === 0) {
-            sessionStorage.setItem('isGameOver', 'true');
+            localStorage.setItem('isGameOver', 'true');
         }
         
-        // If your page navigates away after clicking, 
-        // the 'pageshow' listener below will handle the UI refresh when they return.
         updateUI(); 
     } else {
         e.preventDefault(); 
@@ -61,16 +76,12 @@ drawBtn.addEventListener('click', (e) => {
 });
 
 // 4. Lifecycle Listeners
-// 'pageshow' is crucial: it fires when the page loads AND when navigating back/forward
 window.addEventListener('pageshow', updateUI);
+document.addEventListener('DOMContentLoaded', updateUI);
 
-// Sync across tabs (if user opens the same session in two tabs)
+// Sync across tabs
 window.addEventListener('storage', (e) => {
-    if (e.key === 'drawChances' || e.key === 'isGameOver') {
+    if (['drawChances', 'isGameOver', 'hasClaimedShareBonus'].includes(e.key)) {
         updateUI();
     }
 });
-
-// Ensure UI is correct when hitting 'Back' button or loading page
-window.addEventListener('pageshow', updateUI);
-document.addEventListener('DOMContentLoaded', updateUI);
