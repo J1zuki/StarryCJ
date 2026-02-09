@@ -1,55 +1,76 @@
-// Function to sync data from localStorage
+// 1. Centralized State Management
 function getGameState() {
-    const storedChances = localStorage.getItem('drawChances');
-    // If it's the first time ever, set it to 1
+    const storedChances = sessionStorage.getItem('drawChances');
+    const isGameOver = sessionStorage.getItem('isGameOver') === 'true';
+    
+    // Default state for a brand new session
     if (storedChances === null) {
-        localStorage.setItem('drawChances', 1);
-        return 1;
+        sessionStorage.setItem('drawChances', 1);
+        sessionStorage.setItem('isGameOver', 'false');
+        return { chances: 1, isGameOver: false };
     }
-    return parseInt(storedChances);
+    
+    return { 
+        chances: parseInt(storedChances), 
+        isGameOver: isGameOver 
+    };
 }
-
-let chances = getGameState();
-let isGameOver = localStorage.getItem('isGameOver') === 'true';
 
 const drawBtn = document.getElementById('drawBtn');
 const chanceDisplay = document.getElementById('chanceCount');
 
+// 2. UI Update Logic
 function updateUI() {
-    // Always get the freshest data before updating
-    chances = getGameState();
-    isGameOver = localStorage.getItem('isGameOver') === 'true';
+    const state = getGameState();
     
-    if (chanceDisplay) chanceDisplay.innerText = chances;
+    if (chanceDisplay) chanceDisplay.innerText = state.chances;
     
-    if (isGameOver || chances <= 0) {
-        drawBtn.innerText = isGameOver ? "DRAW COMPLETED" : "NO CHANCES LEFT";
-        drawBtn.classList.add('disabled'); // Use a CSS class for styling
+    if (state.isGameOver || state.chances <= 0) {
+        drawBtn.innerText = state.isGameOver ? "DRAW COMPLETED" : "NO CHANCES LEFT";
         drawBtn.style.backgroundColor = "#ccc";
-        drawBtn.style.pointerEvents = "none"; 
+        drawBtn.style.pointerEvents = "none";
+        drawBtn.style.cursor = "not-allowed";
     } else {
         drawBtn.innerText = "PICK A TICKET!";
-        drawBtn.style.backgroundColor = ""; // Reset to original CSS
+        drawBtn.style.backgroundColor = ""; 
         drawBtn.style.pointerEvents = "auto";
+        drawBtn.style.cursor = "pointer";
     }
 }
 
+// 3. The Draw Action
 drawBtn.addEventListener('click', (e) => {
-    chances = getGameState(); // Check chances one last time
-    if (chances > 0) {
-        chances--;
-        localStorage.setItem('drawChances', chances);
+    let state = getGameState();
+    
+    if (state.chances > 0) {
+        state.chances--;
         
-        if (chances === 0) {
-            localStorage.setItem('isGameOver', 'true');
+        // Save new state
+        sessionStorage.setItem('drawChances', state.chances);
+        if (state.chances === 0) {
+            sessionStorage.setItem('isGameOver', 'true');
         }
+        
+        // If your page navigates away after clicking, 
+        // the 'pageshow' listener below will handle the UI refresh when they return.
+        updateUI(); 
     } else {
         e.preventDefault(); 
         alert("No chances left!");
     }
 });
 
-// Use 'pageshow' to catch when users click the 'Back' button
+// 4. Lifecycle Listeners
+// 'pageshow' is crucial: it fires when the page loads AND when navigating back/forward
 window.addEventListener('pageshow', updateUI);
-// Also run on initial load
+
+// Sync across tabs (if user opens the same session in two tabs)
+window.addEventListener('storage', (e) => {
+    if (e.key === 'drawChances' || e.key === 'isGameOver') {
+        updateUI();
+    }
+});
+
+// Ensure UI is correct when hitting 'Back' button or loading page
+window.addEventListener('pageshow', updateUI);
 document.addEventListener('DOMContentLoaded', updateUI);
