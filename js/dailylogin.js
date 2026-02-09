@@ -1,17 +1,21 @@
 const TOTAL_DAYS = 9;
-const COOLDOWN_HOURS = 0.002; 
+const COOLDOWN_HOURS = 0.001; 
 
-// Retrieve data
-let loginData = JSON.parse(localStorage.getItem('dailyLogin'));
+// 1. Try to get data from the current SESSION
+let loginData = JSON.parse(sessionStorage.getItem('dailyLogin'));
 
-// FORCE Day 1
-if (!loginData || loginData.currentDay >= 4) { 
+// 2. If it's a brand new session (just opened the code), loginData will be null
+if (!loginData) {
     loginData = {
         currentDay: 1,
         lastClaimDate: null
     };
-    localStorage.setItem('dailyLogin', JSON.stringify(loginData));
+    // Save it to the session so progress stays while the tab is open
+    sessionStorage.setItem('dailyLogin', JSON.stringify(loginData));
 }
+
+// Save it back immediately so the rest of the functions see Day 1
+localStorage.setItem('dailyLogin', JSON.stringify(loginData));
 
 function initGrid() {
     const grid = document.getElementById('rewards-grid');
@@ -46,7 +50,7 @@ function initGrid() {
     if (!canClaim) {
         claimBtn.disabled = true;
         const timeLeft = COOLDOWN_HOURS - hoursPassed;
-        timerMsg.innerText = `Come back in ${Math.ceil(timeLeft)} hours for Day ${loginData.currentDay}`;
+        timerMsg.innerText = `Come back in next day to claim your reward!`;
     } else {
         claimBtn.disabled = false;
         timerMsg.innerText = "Ready to claim!";
@@ -56,7 +60,6 @@ function initGrid() {
 function claimReward() {
     const claimedDay = loginData.currentDay; 
     
-    // Save the timestamp and increment the day
     loginData.lastClaimDate = new Date().toISOString();
     loginData.currentDay += 1;
 
@@ -64,15 +67,11 @@ function claimReward() {
         loginData.currentDay = 1; 
     }
 
-    // Save progress
-    localStorage.setItem('dailyLogin', JSON.stringify(loginData));
-    
-    // Save which day was JUST claimed so the next page knows what to show
-    localStorage.setItem('justClaimed', claimedDay);
+    // 3. IMPORTANT: Update sessionStorage, not localStorage
+    sessionStorage.setItem('dailyLogin', JSON.stringify(loginData));
+    localStorage.setItem('justClaimed', claimedDay); // Success page can still use localStorage
 
-    // Redirect to the success page
     window.location.href = "dailyloginclaim.html"; 
 }
 
-// Start the UI
-initGrid();
+initGrid()
