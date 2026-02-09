@@ -57,22 +57,24 @@ function handleKeyPress(event) {
     }
 }
 
-// 5. Lucky Draw Logic (Updated to use sessionStorage)
+// 5. Lucky Draw Logic (Updated to localStorage for "Permanent" memory)
 function grantExtraChance() {
-    // We use sessionStorage so it resets when the tab closes
-    const hasClaimed = sessionStorage.getItem('hasClaimedShareBonus') === 'true';
+    // localStorage persists even if the browser is closed
+    const hasClaimed = localStorage.getItem('hasClaimedShareBonus') === 'true';
 
     if (hasClaimed) {
         safeBotReply("You've already used your bonus! 🍀", 1500);
         return;
     }
 
-    let currentChances = parseInt(sessionStorage.getItem('drawChances')) || 0;
+    // Get current chances from localStorage
+    let currentChances = parseInt(localStorage.getItem('drawChances')) || 0;
     currentChances += 1;
 
-    sessionStorage.setItem('drawChances', currentChances);
-    sessionStorage.setItem('isGameOver', 'false');
-    sessionStorage.setItem('hasClaimedShareBonus', 'true');
+    // Save back to localStorage
+    localStorage.setItem('drawChances', currentChances);
+    localStorage.setItem('isGameOver', 'false');
+    localStorage.setItem('hasClaimedShareBonus', 'true'); // Flag is now saved permanently
 
     safeBotReply("🎉 One-time bonus earned! Go back to the Lucky Draw page!", 1800);
 }
@@ -103,9 +105,12 @@ function closeChat() {
 // This runs every time the page loads
 (function init() {
     if (IS_TESTING_MODE) {
-        console.log("Testing Mode: Resetting session data...");
-        sessionStorage.removeItem('hasClaimedShareBonus');
-        sessionStorage.setItem('drawChances', '0');
-        sessionStorage.setItem('isGameOver', 'false');
+        console.log("🛠️ Testing Mode Active: Clearing localStorage for reset...");
+        // This wipes the "already shared" flag so you can test again and again
+        localStorage.removeItem('hasClaimedShareBonus');
+        localStorage.setItem('drawChances', '0');
+        localStorage.setItem('isGameOver', 'false');
+    } else {
+        console.log("🚀 Live Mode: Progress will be saved permanently.");
     }
 })();
