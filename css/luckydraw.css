@@ -97,8 +97,15 @@ body {
     margin-bottom: 20px;
 }
 
+.jar-image {
+    width: 200px;
+    height: auto; 
+    display: block;
+    margin: 0 auto; 
+}
+
 .main-draw-btn, .share-action-btn {
-    background: #6284ad; /* Matching the blue in your image */
+    background: #6284ad; 
     color: white;
     border: none;
     padding: 15px 40px;
