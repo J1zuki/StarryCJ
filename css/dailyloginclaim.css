@@ -1,97 +1,55 @@
 :root {
-    --gold: #f1d279;
-    --dark-blue: #001a33;
-    --navy-blue: #003366;
-    --card-bg: #ffffff;
+    --gold-border: #d4af37;
+    --gold-box: #c09600; /* The darker mustard gold in your image */
+    --blue-tag: #5c7fa3;
+    --blue-btn: #6283a9;
+    --text-dark: #000000;
+    --text-muted: #7a8eb3;
 }
 
 body {
     margin: 0;
-    padding: 0;
     font-family: 'Inter', sans-serif;
-    background-color: #0d1117;
-    background-image: radial-gradient(circle at center, #002b55 0%, #001122 100%);
-    min-height: 100vh;
-    color: white;
-}
-
-.web-wrapper {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 40px 20px;
-}
-
-.btn-back {
-    display: inline-flex;
-    color: var(--gold);
-    text-decoration: none;
-    padding: 8px 15px;
-    border-radius: 5px;
-    border: 1px solid rgba(241, 210, 121, 0.3);
-    transition: 0.3s;
-}
-
-.main-header { text-align: center; margin-bottom: 40px; }
-.logo-subtitle { color: var(--gold); letter-spacing: 8px; text-transform: uppercase; }
-
-/* Header */
-.main-header {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.logo-container img {
-    max-width: 150px;
-    height: auto;
-}
-
-.logo-subtitle {
-    font-size: 1.2rem;
-    color: var(--gold);
-    letter-spacing: 8px;
-    margin-top: 10px;
-    text-transform: uppercase;
-}
-
-/* Chat UI */
-.dashboard-container {
+    /* Starry background effect */
+    background-color: #011627;
+    background-image: radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px);
+    background-size: 550px 550px;
+    height: 100vh;
     display: flex;
-    justify-content: center; /* Centers the chat box */
-    padding: 20px;
-}
-
-/* Modal Overlay */
-.modal-overlay {
-    display: none; /* Hidden by default */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    z-index: 1000;
     justify-content: center;
     align-items: center;
+}
+
+/* Modal Overlay - Changed to flex for visibility */
+.modal-overlay {
+    display: flex; 
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
 }
 
 /* Success Card */
 .success-card {
     background: white;
-    padding: 40px 20px;
-    border-radius: 25px;
-    border: 4px solid var(--gold);
+    padding: 50px 30px;
+    border-radius: 35px;
+    border: 6px solid var(--gold-border);
     text-align: center;
-    max-width: 380px;
-    width: 90%;
-    color: #333;
+    max-width: 400px;
+    width: 85%;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
 .success-day-box {
-    background: #c59d00;
-    width: 150px;
-    height: 150px;
-    margin: 0 auto 20px;
-    border-radius: 30px;
+    background: var(--gold-box);
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 30px;
+    border-radius: 40px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -99,37 +57,50 @@ body {
     color: white;
 }
 
-.success-day-box h2 { margin: 0; font-size: 2rem; }
+.success-day-box h2 { 
+    margin: 0; 
+    font-size: 2.8rem; 
+    font-weight: 800;
+}
 
 .gem-tag-large {
-    background: #5c85bb;
-    padding: 5px 15px;
-    border-radius: 8px;
-    font-size: 0.9rem;
-    margin-top: 10px;
+    background: var(--blue-tag);
+    padding: 8px 20px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-top: 15px;
 }
 
 .success-title {
-    font-size: 1.8rem;
-    font-weight: 800;
-    margin: 10px 0;
-    line-height: 1.2;
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: var(--text-dark);
+    margin: 15px 0 10px;
+    line-height: 1.1;
 }
 
 .success-subtext {
-    color: #7a8eb3;
-    font-size: 0.9rem;
-    margin-bottom: 25px;
+    color: var(--text-muted);
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 30px;
+    padding: 0 20px;
 }
 
 .close-modal-btn {
-    background: #6283a9;
+    background: var(--blue-btn);
     color: white;
     border: none;
-    padding: 12px 0;
-    width: 180px;
-    border-radius: 25px;
-    font-size: 1.1rem;
-    font-weight: 600;
+    padding: 15px 0;
+    width: 220px;
+    border-radius: 50px; /* Fully rounded ends */
+    font-size: 1.3rem;
+    font-weight: 700;
     cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.close-modal-btn:hover {
+    transform: scale(1.05);
 }

@@ -17,14 +17,19 @@ function claimReward() {
     showSuccessModal(claimedDay);
 }
 
+function closeModal() {
+    // Hide the modal (optional if navigating away immediately)
+    document.getElementById('success-modal').style.display = 'none';
+    
+    // Redirect to the login page
+    window.location.href = "dailylogin.html";
+}
+
+// Ensure the show function works
 function showSuccessModal(dayNumber) {
     const modal = document.getElementById('success-modal');
     const dayText = document.getElementById('modal-day-text');
     
-    dayText.innerText = `Day ${dayNumber}`;
-    modal.style.display = 'flex';
-}
-
-function closeModal() {
-    document.getElementById('success-modal').style.display = 'none';
+    if(dayText) dayText.innerText = `Day ${dayNumber}`;
+    if(modal) modal.style.display = 'flex';
 }
