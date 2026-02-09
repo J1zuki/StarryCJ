@@ -50,3 +50,37 @@ function appendImage(sender, src) {
 function closeChat() {
     document.getElementById('chat-modal').style.display = 'none';
 }
+
+// ... (keep your existing variables at the top)
+
+function sendTextMessage() {
+    const input = document.getElementById('message-text');
+    const message = input.value.trim();
+    
+    if (message !== "") {
+        appendMessage('You', message);
+        
+        // 1. Check for Lucky Draw keyword
+        if (message.toLowerCase().includes("lucky draw")) {
+            grantExtraChance();
+            setTimeout(() => botReply("Awesome! I've added your extra entry. Good luck! 🍀"), 1000);
+        } else {
+            // 2. Standard bot reply for other messages
+            setTimeout(() => botReply("Thanks for the message! How can I help you today?"), 1200);
+        }
+        
+        input.value = "";
+    }
+}
+
+// The Bot's side of the conversation
+function botReply(text) {
+    const msgWindow = document.getElementById('chat-messages');
+    msgWindow.innerHTML += `
+        <div class="msg-bubble bot-msg" style="align-self: flex-end; background: var(--navy-blue); color: white;">
+            <b>StarryBot:</b> ${text}
+        </div>`;
+    msgWindow.scrollTop = msgWindow.scrollHeight;
+}
+
+// ... (keep handleImageUpload and other functions)
