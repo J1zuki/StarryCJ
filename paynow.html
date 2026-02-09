@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>STARRYCJ – Paynow Payment</title>
 
-    <link rel="stylesheet" href="./css/creditcard.css">
+    <link rel="stylesheet" href="./css/paynow.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 
@@ -23,6 +23,47 @@
                 </a>
             </div>
         </header>
+
+        <!-- PAYNOW CARD -->
+        <section class="payment-section">
+            <div class="paynow-card">
+                <h3 class="store-name">STARRYCJ STORE</h3>
+
+                <div class="qr-wrapper">
+                    <img src="./images/product/paynow.png" alt="PayNow QR Code">
+                </div>
+
+                <button class="pay-btn" id="payBtn">
+                    <span class="btn-text">Pay</span>
+                    <span class="spinner"></span>
+                </button>
+            </div>
+        </section>
+
+        <!-- LOADING SCREEN -->
+        <div class="loading-box hidden" id="loadingBox">
+            <p>Loading...</p>
+            <div class="loader"></div>
+        </div>
     </div>
+
+    <script>
+        const payBtn = document.getElementById("payBtn");
+        const loadingBox = document.getElementById("loadingBox");
+
+        payBtn.addEventListener("click", () => {
+            // Disable button to prevent double click
+            payBtn.disabled = true;
+            payBtn.classList.add("loading");
+
+            // Show loading screen
+            loadingBox.classList.remove("hidden");
+
+            // Simulate PayNow processing
+            setTimeout(() => {
+                window.location.href = "success.html";
+            }, 2500);
+        });
+    </script>
 </body>
 </html>
