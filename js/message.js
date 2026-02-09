@@ -61,7 +61,8 @@ function appendImage(sender, src) {
 }
 
 function closeChat() {
-    document.getElementById('chat-modal').style.display = 'none';
+    // Redirect back to the members/share page
+    window.location.href = 'share.html';
 }
 
 
