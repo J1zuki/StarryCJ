@@ -52,19 +52,18 @@
     </div>
 
     <script>
-        // Runs immediately when the page structure is ready
         document.addEventListener('DOMContentLoaded', () => {
             const modal = document.getElementById('winModal');
             const closeBtn = document.getElementById('closeModal');
 
-            // Show the winning popup automatically
             modal.style.display = 'flex';
 
-            // Close logic
-            closeBtn.onclick = () => modal.style.display = 'none';
+            closeBtn.onclick = (e) => {
+                // Optional: If you want to deduct the chance ONLY when closing:
+                // let chances = parseInt(localStorage.getItem('drawChances'));
+                // localStorage.setItem('drawChances', chances - 1);
 
-            window.onclick = (event) => {
-                if (event.target === modal) modal.style.display = 'none';
+                modal.style.display = 'none';
             };
         });
     </script>
