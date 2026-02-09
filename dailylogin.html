@@ -28,26 +28,14 @@
         </header>
 
         <section class="dashboard-container">
-            <div id="chat-modal" class="modal">
-                <div class="chat-container">
-                    <header class="chat-header">
-                        <span id="chat-with-name">Alan Yeo</span>
-                        <button class="close-btn" onclick="closeChat()">×</button>
-                    </header>
-
-                    <div id="chat-messages" class="chat-window">
-                    </div>
-
-                    <div class="chat-input-area">
-                        <button class="icon-btn" onclick="document.getElementById('image-upload').click()">📷</button>
-                        <input type="file" id="image-upload" hidden accept="image/*" onchange="handleImageUpload(this)">
-                        <input type="text" id="message-text" placeholder="Type a message..."
-                            onkeypress="handleKeyPress(event)">
-                        <button class="send-btn" onclick="sendTextMessage()">Send</button>
-                    </div>
+            <div class="rewards-card">
+                <div class="rewards-grid" id="rewards-grid">
                 </div>
+                <button id="claim-btn" class="claim-btn" onclick="claimReward()">Claim</button>
+                <p id="timer-msg" class="timer-msg"></p>
             </div>
         </section>
+
     </div>
 
     <script src="./js/dailylogin.js"></script>
