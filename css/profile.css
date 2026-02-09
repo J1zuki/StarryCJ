@@ -1,0 +1,338 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(
+    135deg,
+    #05060a 0%,
+    #0b1c2d 50%,
+    #081420 100%
+  );
+}
+
+.app {
+  width: 100%;
+  max-width: 1200px;   /* desktop website width */
+  margin: 0 auto;
+  padding: 40px 20px 120px;
+}
+
+/* HEADER */
+.top-header {
+  width: 100%;
+  height: 120px;
+  background: linear-gradient(90deg, #015085, #015085);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 140px;
+  padding: 20px 0;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+}
+
+.header-logo {
+  height: 400px;
+  width: auto;
+  object-fit: contain;
+}
+
+.navbar-nav .nav-link {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.navbar-nav .nav-link:hover {
+  text-decoration: underline;
+}
+
+/* =========================
+   PROFILE CARD
+   ========================= */
+.profile-card {
+  background: #0d2745;
+  margin-bottom: 25px;
+  padding: 20px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  border: 2px solid #f1d279;
+}
+
+.avatar {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  background: white;
+  object-fit: cover;
+}
+
+.profile-info h3 {
+  margin: 0;
+  font-size: 20px;
+  color: #ffffff;
+}
+
+.profile-info p {
+  margin: 4px 0 0;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* =========================
+   PROFILE SECTIONS
+   ========================= */
+.profile-section {
+  margin-bottom: 25px;
+  padding: 20px;
+  background: #0d2745;
+  border-radius: 18px;
+  border: 2px solid #f1d279;
+}
+
+.profile-section h4 {
+  margin-bottom: 15px;
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+}
+
+/* =========================
+   PURCHASE ICONS – EVEN FIX
+   ========================= */
+.purchase-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.icon-link {
+  text-decoration: none;
+  display: flex;                 /* 🔑 makes all items same height */
+}
+
+.icon-box {
+  background: white;
+  border-radius: 16px;
+
+  height: 140px;                 /* 🔑 same height for all */
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 14px 10px;
+  text-align: center;
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* ICON NORMALIZATION */
+.icon-box img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 8px;
+}
+
+/* LABEL */
+.icon-box span {
+  font-size: 14px;
+  font-weight: 600;
+  color: #2563eb;
+}
+
+/* HOVER */
+.icon-link:hover .icon-box {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+
+/* =========================
+   ABOUT US – VOUCHER STYLE
+   ========================= */
+.about-voucher h4 {
+  margin-bottom: 15px;
+}
+
+.voucher-card {
+  background: white;
+  border-radius: 16px;
+  padding: 14px 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border: 2px solid #f1d279;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+/* LEFT */
+.voucher-left img {
+  height: 32px;
+}
+
+/* MIDDLE */
+.voucher-middle span {
+  font-size: 16px;
+  font-weight: 600;
+  color: #0d2745;
+}
+
+/* RIGHT */
+.voucher-right a {
+  background: #5b7fa8;
+  color: white;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.voucher-right a:hover {
+  background: #3f648c;
+}
+
+/* =========================
+   ABOUT US BUTTONS
+   ========================= */
+.btn-row {
+  display: flex;
+  gap: 15px;
+}
+
+.btn-row button {
+  flex: 1;
+  background: #015085;
+  border: none;
+  color: white;
+  padding: 10px 0;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.btn-row button:hover {
+  background: #0b3f6f;
+  transform: translateY(-2px);
+}
+
+/* =========================
+   MY LIKES – FULL SIZE INSIDE BOX
+   ========================= */
+.likes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.likes-grid .like-card {
+  background: white;
+  border-radius: 18px;
+  height: 220px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 18px;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.35);
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.likes-grid .like-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 32px rgba(0,0,0,0.45);
+}
+
+.likes-grid .like-card img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+
+/* =========================
+   FOOTER
+   ========================= */
+.site-footer {
+  background: linear-gradient(90deg, #015085, #015085);
+  color: white;
+  padding: 50px 20px 20px;
+  margin-top: 80px;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.footer-brand img {
+  height: 120px;
+  margin-bottom: 10px;
+}
+
+.footer-brand p {
+  font-size: 14px;
+  color: #cbd5e1;
+}
+
+.footer-links h4 {
+  margin-bottom: 12px;
+  font-size: 16px;
+}
+
+.footer-links a {
+  display: block;
+  margin-bottom: 8px;
+  color: #cbd5e1;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.footer-links a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  font-size: 13px;
+  color: #a0aec0;
+}
+
+@media (max-width: 768px) {
+  .likes-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .likes-grid img {
+    height: 180px;
+  }
+}
