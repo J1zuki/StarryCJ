@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StarryCJ - Daily Login Claim</title>
+    <link rel="stylesheet" href="./css/dailyloginclaim.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="web-wrapper">
+        <nav class="back-nav">
+            <a href="home.html" class="btn-back">
+                ← Back to Shop
+            </a>
+        </nav>
+
+        <header class="main-header">
+            <div class="logo-container">
+                <a href="home.html">
+                    <img src="./images/logo/logoo (1).png" alt="STARRYCJ">
+                </a>
+                <div class="logo-subtitle">Daily Login</div>
+            </div>
+        </header>
+
+        <section class="dashboard-container">
+            <div id="success-modal" class="modal-overlay">
+                <div class="success-card">
+                    <div class="success-day-box">
+                        <h2 id="modal-day-text">Day 1</h2>
+                        <div class="gem-tag-large">2 Gems 💎</div>
+                    </div>
+
+                    <h1 class="success-title">You have Claimed today reward!</h1>
+                    <p class="success-subtext">Come back to collect more Gems to exchange vouchers!</p>
+
+                    <button class="close-modal-btn" onclick="closeModal()">Close</button>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script src="./js/dailyloginclaim.js"></script>
+</body>
+
+</html>
