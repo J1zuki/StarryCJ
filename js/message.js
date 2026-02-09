@@ -1,35 +1,34 @@
-let luckyDrawChances = 0;
+let luckyDrawChances = parseInt(localStorage.getItem('luckyChances')) || 0;
 
 function grantExtraChance() {
     luckyDrawChances++;
-    alert("🎉 You've earned an extra Lucky Draw chance for sharing with a friend!");
-    // Update your database or localStorage here
+    alert(`🎉 You've earned an extra Lucky Draw chance! Total: ${luckyDrawChances}`);
     localStorage.setItem('luckyChances', luckyDrawChances);
 }
 
-// Function to handle sending text
 function sendTextMessage() {
     const input = document.getElementById('message-text');
-    if (input.value.trim() !== "") {
-        appendMessage('You', input.value);
+    const message = input.value.trim();
+    
+    if (message !== "") {
+        appendMessage('You', message);
         
-        // Logic: If they mention "Lucky Draw", they get a chance
-        if (input.value.toLowerCase().includes("lucky draw")) {
+        if (message.toLowerCase().includes("lucky draw")) {
             grantExtraChance();
         }
-        
         input.value = "";
     }
 }
 
-// Function to handle sending image
+function handleKeyPress(e) {
+    if (e.key === 'Enter') sendTextMessage();
+}
+
 function handleImageUpload(input) {
     if (input.files && input.files[0]) {
         const reader = new FileReader();
         reader.onload = function(e) {
             appendImage('You', e.target.result);
-            
-            // AUTOMATIC REWARD for sharing any image in this scenario
             grantExtraChance();
         };
         reader.readAsDataURL(input.files[0]);
@@ -39,9 +38,15 @@ function handleImageUpload(input) {
 function appendMessage(sender, text) {
     const msgWindow = document.getElementById('chat-messages');
     msgWindow.innerHTML += `<div class="msg-bubble"><b>${sender}:</b> ${text}</div>`;
+    msgWindow.scrollTop = msgWindow.scrollHeight; // Auto-scroll
 }
 
 function appendImage(sender, src) {
     const msgWindow = document.getElementById('chat-messages');
-    msgWindow.innerHTML += `<div class="msg-bubble"><b>${sender}:</b><br><img src="${src}" style="width:100px; border-radius:5px;"></div>`;
+    msgWindow.innerHTML += `<div class="msg-bubble"><b>${sender}:</b><br><img src="${src}" style="width:100%; max-width:150px; border-radius:5px; margin-top:5px;"></div>`;
+    msgWindow.scrollTop = msgWindow.scrollHeight;
+}
+
+function closeChat() {
+    document.getElementById('chat-modal').style.display = 'none';
 }
