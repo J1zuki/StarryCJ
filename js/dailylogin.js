@@ -1,11 +1,17 @@
 const TOTAL_DAYS = 9;
-const COOLDOWN_HOURS = 24;
+const COOLDOWN_HOURS = 0.002; 
 
-// Load data from localStorage or set defaults
-let loginData = JSON.parse(localStorage.getItem('dailyLogin')) || {
-    currentDay: 1,
-    lastClaimDate: null
-};
+// Retrieve data
+let loginData = JSON.parse(localStorage.getItem('dailyLogin'));
+
+// FORCE Day 1
+if (!loginData || loginData.currentDay >= 4) { 
+    loginData = {
+        currentDay: 1,
+        lastClaimDate: null
+    };
+    localStorage.setItem('dailyLogin', JSON.stringify(loginData));
+}
 
 function initGrid() {
     const grid = document.getElementById('rewards-grid');
@@ -48,17 +54,24 @@ function initGrid() {
 }
 
 function claimReward() {
+    const claimedDay = loginData.currentDay; 
+    
+    // Save the timestamp and increment the day
     loginData.lastClaimDate = new Date().toISOString();
     loginData.currentDay += 1;
 
-    // Reset after day 9
     if (loginData.currentDay > TOTAL_DAYS) {
         loginData.currentDay = 1; 
     }
 
+    // Save progress
     localStorage.setItem('dailyLogin', JSON.stringify(loginData));
-    alert("Day claimed! See you tomorrow.");
-    initGrid();
+    
+    // Save which day was JUST claimed so the next page knows what to show
+    localStorage.setItem('justClaimed', claimedDay);
+
+    // Redirect to the success page
+    window.location.href = "dailyloginclaim.html"; 
 }
 
 // Start the UI

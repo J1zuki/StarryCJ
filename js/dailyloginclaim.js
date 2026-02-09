@@ -17,6 +17,16 @@ function claimReward() {
     showSuccessModal(claimedDay);
 }
 
+// dailyloginclaim.js
+document.addEventListener('DOMContentLoaded', () => {
+    const claimedDay = localStorage.getItem('justClaimed') || 1;
+    const dayText = document.getElementById('modal-day-text');
+    
+    if (dayText) {
+        dayText.innerText = `Day ${claimedDay}`;
+    }
+});
+
 function closeModal() {
     // Hide the modal (optional if navigating away immediately)
     document.getElementById('success-modal').style.display = 'none';
