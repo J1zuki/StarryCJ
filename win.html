@@ -58,11 +58,8 @@
 
             modal.style.display = 'flex';
 
-            closeBtn.onclick = (e) => {
-                // Optional: If you want to deduct the chance ONLY when closing:
-                // let chances = parseInt(localStorage.getItem('drawChances'));
-                // localStorage.setItem('drawChances', chances - 1);
-
+            // When they click close, the href="luckydraw.html" handles the move
+            closeBtn.onclick = () => {
                 modal.style.display = 'none';
             };
         });
