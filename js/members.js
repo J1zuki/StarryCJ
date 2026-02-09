@@ -42,9 +42,8 @@ function renderMembers() {
 }
 
 function openChat(name) {
-    // You can replace this alert with a redirect to a chat page
-    // window.location.href = `chat.html?user=${name}`;
-    alert("Opening chat with " + name);
+    // Redirect to the message page with the name as a parameter
+    window.location.href = `message.html?user=${encodeURIComponent(name)}`;
 }
 
 // Initialize on load
