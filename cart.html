@@ -91,6 +91,9 @@
             <label>
                 <input type="checkbox" id="applyVoucher"> Apply Voucher
             </label>
+
+            <!-- SELECTED VOUCHER -->
+            <div id="appliedVoucher" class="voucher-ticket hidden"></div>
         </div>
 
         <div class="summary-box">
@@ -117,22 +120,22 @@
             <!-- PRICE DETAILS -->
             <div class="summary-row">
                 <span>Amount</span>
-                <span>SGD 390.00</span>
+                <span id="amount">SGD 390.00</span>
             </div>
 
             <div class="summary-row">
                 <span>Delivery Charge</span>
-                <span>SGD 4.00</span>
+                <span id="delivery">SGD 4.00</span>
             </div>
 
             <div class="summary-row">
                 <span>GST</span>
-                <span>SGD 9.00</span>
+                <span id="gst">SGD 9.00</span>
             </div>
 
             <div class="summary-row discount">
                 <span>Discount</span>
-                <span>SGD 0</span>
+                <span id="discount">SGD 0</span>
             </div>
 
             <hr>
@@ -140,7 +143,7 @@
             <!-- GRAND TOTAL -->
             <div class="summary-row total">
                 <span>Grand Total</span>
-                <span>SGD 378.00</span>
+                <span id="grandTotal">SGD 378.00</span>
             </div>
         </div>
 
@@ -190,12 +193,84 @@
 
     <script>
         const voucherCheckbox = document.getElementById("applyVoucher");
+        const voucherTicket = document.getElementById("appliedVoucher");
 
+        const amountEl = document.getElementById("amount");
+        const deliveryEl = document.getElementById("delivery");
+        const gstEl = document.getElementById("gst");
+        const discountEl = document.getElementById("discount");
+        const totalEl = document.getElementById("grandTotal");
+
+        const parseMoney = el =>
+            parseFloat(el.textContent.replace(/[^\d.]/g, "")) || 0;
+
+        function calculateTotal() {
+            const amount = parseMoney(amountEl);
+            const delivery = parseMoney(deliveryEl);
+            const gst = parseMoney(gstEl);
+
+            let discount = 0;
+            const voucher = JSON.parse(localStorage.getItem("appliedVoucher"));
+
+            if (voucher && Number.isFinite(voucher.percent)) {
+                discount = amount * (voucher.percent / 100);
+                discountEl.textContent = `- SGD ${discount.toFixed(2)}`;
+            } else {
+                discountEl.textContent = "SGD 0.00";
+            }
+
+            const total = amount + delivery + gst - discount;
+            totalEl.textContent = `SGD ${total.toFixed(2)}`;
+        }
+
+        function renderVoucher() {
+            const voucher = JSON.parse(localStorage.getItem("appliedVoucher"));
+
+            if (!voucher || !Number.isFinite(voucher.percent)) {
+                voucherTicket.classList.add("hidden");
+                voucherCheckbox.checked = false;
+                calculateTotal();
+                return;
+            }
+
+            voucherCheckbox.checked = true;
+            voucherTicket.classList.remove("hidden");
+
+            voucherTicket.innerHTML = `
+            <div>
+                <strong>${voucher.code}</strong><br>
+                <span>${voucher.percent}% OFF your order</span>
+            </div>
+            <button id="removeVoucher">Remove</button>
+        `;
+
+            document.getElementById("removeVoucher").onclick = () => {
+                localStorage.removeItem("appliedVoucher");
+                renderVoucher();
+            };
+
+            calculateTotal();
+        }
+
+        // Checkbox behaviour
         voucherCheckbox.addEventListener("change", () => {
-            if (voucherCheckbox.checked) {
-            window.location.href = "voucher.html";
+            const voucher = JSON.parse(localStorage.getItem("appliedVoucher"));
+
+            // Checked → pick voucher
+            if (voucherCheckbox.checked && !voucher) {
+                window.location.href = "voucher.html";
+                return;
+            }
+
+            // Unchecked → remove voucher
+            if (!voucherCheckbox.checked && voucher) {
+                localStorage.removeItem("appliedVoucher");
+                renderVoucher();
             }
         });
+
+        // Initial render
+        renderVoucher();
     </script>
 
     <script>
@@ -206,4 +281,5 @@
         });
     </script>
 </body>
+
 </html>

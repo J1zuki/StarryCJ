@@ -137,6 +137,41 @@ body {
   color: white;
 }
 
+/* ================= APPLIED VOUCHER TICKET ================= */
+.voucher-ticket {
+  margin-top: 12px;
+  padding: 14px 16px;
+  background: white;
+  border-radius: 12px;
+  border-left: 6px solid #16a34a;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+
+.voucher-ticket strong {
+  color: #111827;
+}
+
+.voucher-ticket span {
+  color: #16a34a;
+  font-weight: 700;
+}
+
+.voucher-ticket button {
+  background: none;
+  border: none;
+  color: #dc2626;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
 /* ================= SUMMARY BOX ================= */
 .summary-box {
   background: white;
