@@ -44,12 +44,22 @@
                 <div class="share-card">
                     <h3>SHARE IT WITH YOUR BUDDIES!!</h3>
                     <p>You and your buddies can earn and share vouchers together to spend.</p>
-                    <button id="shareBtn" class="share-action-btn">CLICK HERE TO SHARE!</button>
+                    
+                    <a href="share.html" class="share-action-btn">
+                        CLICK HERE TO SHARE!
+                    </a>
                 </div>
             </div>
         </section>
     </div>
     <script src="./js/luckydraw.js"></script>
+
+    <script>
+        document.getElementById("shareBtn").addEventListener("click", function () {
+            window.location.href = "share.html";
+        });
+    </script>
+
 
 </body>
 
