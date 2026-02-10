@@ -1,24 +1,24 @@
 // --- CONFIGURATION ---
-const IS_TESTING_MODE = true; // Set to false when you go live!
+const IS_TESTING_MODE = true; 
 
-// 1. Centralized State Management (Using localStorage)
+// 1. Centralized State Management
 function getGameState() {
-    // If testing, we force a reset of the specific keys we care about
+    // Reset logic for testing
     if (IS_TESTING_MODE && !sessionStorage.getItem('resetDone')) {
         localStorage.setItem('drawChances', '1');
         localStorage.setItem('isGameOver', 'false');
         localStorage.removeItem('hasClaimedShareBonus');
-        sessionStorage.setItem('resetDone', 'true'); // Prevents infinite reset loop during session
+        sessionStorage.setItem('resetDone', 'true');
     }
 
-    const storedChances = localStorage.getItem('drawChances');
-    const isGameOver = localStorage.getItem('isGameOver') === 'true';
+    let storedChances = localStorage.getItem('drawChances');
+    let isGameOver = localStorage.getItem('isGameOver') === 'true';
     
-    // Default state for a brand new user
+    // Default state for brand new user
     if (storedChances === null) {
-        localStorage.setItem('drawChances', 1);
+        storedChances = "1";
+        localStorage.setItem('drawChances', storedChances);
         localStorage.setItem('isGameOver', 'false');
-        return { chances: 1, isGameOver: false };
     }
     
     return { 
@@ -35,14 +35,15 @@ function updateUI() {
     const state = getGameState();
     
     if (chanceDisplay) {
-        // Correct grammar: "pick" if 1, "picks" if 0 or 2+
         const plural = state.chances === 1 ? "pick" : "picks";
         chanceDisplay.innerText = `${state.chances} remaining daily ${plural}.`;
     }
     
+    if (!drawBtn) return; // Safety check
+
     if (state.isGameOver || state.chances <= 0) {
         drawBtn.innerText = state.isGameOver ? "DRAW COMPLETED" : "NO CHANCES LEFT";
-        drawBtn.classList.add('disabled-btn'); // Best to use a CSS class
+        drawBtn.classList.add('disabled-btn'); 
         drawBtn.style.backgroundColor = "#ccc";
         drawBtn.style.pointerEvents = "none";
     } else {
@@ -54,26 +55,28 @@ function updateUI() {
 }
 
 // 3. The Draw Action
-drawBtn.addEventListener('click', (e) => {
-    let state = getGameState();
-    
-    if (state.chances > 0) {
-        state.chances--;
+if (drawBtn) {
+    drawBtn.addEventListener('click', (e) => {
+        let state = getGameState();
         
-        // Save new state to localStorage
-        localStorage.setItem('drawChances', state.chances);
-        
-        // Only set game over if they actually have 0 chances
-        if (state.chances === 0) {
-            localStorage.setItem('isGameOver', 'true');
+        if (state.chances > 0) {
+            state.chances--;
+            
+            localStorage.setItem('drawChances', state.chances);
+            
+            // Logic: Mark game over only when they hit 0
+            if (state.chances === 0) {
+                localStorage.setItem('isGameOver', 'true');
+            }
+            
+            updateUI(); 
+            // Trigger your actual prize animation/logic here!
+        } else {
+            e.preventDefault(); 
+            alert("No chances left!");
         }
-        
-        updateUI(); 
-    } else {
-        e.preventDefault(); 
-        alert("No chances left!");
-    }
-});
+    });
+}
 
 // 4. Lifecycle Listeners
 window.addEventListener('pageshow', updateUI);
@@ -84,9 +87,4 @@ window.addEventListener('storage', (e) => {
     if (['drawChances', 'isGameOver', 'hasClaimedShareBonus'].includes(e.key)) {
         updateUI();
     }
-<<<<<<< HEAD
-    updateUI();
 });
-=======
-});
->>>>>>> 96940f66c88f87222ac44cb50a14a4139c31d12c
