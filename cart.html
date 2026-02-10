@@ -184,14 +184,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        document.querySelectorAll(".remove-btn").forEach(btn => {
-            btn.addEventListener("click", () => {
-                btn.closest(".cart-item").remove();
-            });
-        });
-    </script>
-
-    <script>
         const voucherCheckbox = document.getElementById("applyVoucher");
         const voucherTicket = document.getElementById("appliedVoucher");
 
@@ -201,13 +193,35 @@
         const discountEl = document.getElementById("discount");
         const totalEl = document.getElementById("grandTotal");
 
-        const parseMoney = el =>
-            parseFloat(el.textContent.replace(/[^\d.]/g, "")) || 0;
+        // Parse "SGD 120.00" -> 120
+        const parseMoneyText = (text) =>
+            parseFloat(String(text).replace(/[^\d.]/g, "")) || 0;
+
+        const parseMoneyEl = (el) =>
+            parseMoneyText(el?.textContent || "");
+
+        // ✅ Recalculate amount + gst from remaining cart items
+        function recalcFromCartItems() {
+            let amount = 0;
+
+            document.querySelectorAll(".cart-item .item-price").forEach(priceEl => {
+                amount += parseMoneyText(priceEl.textContent);
+            });
+
+            amountEl.textContent = `SGD ${amount.toFixed(2)}`;
+
+            // Keep your current GST rate based on original: 390 -> 9 (≈ 2.3077%)
+            // So we compute GST using the same rate to stay consistent.
+            const GST_RATE = 9 / 390; // ≈ 0.0230769
+            const gst = amount * GST_RATE;
+
+            gstEl.textContent = `SGD ${gst.toFixed(2)}`;
+        }
 
         function calculateTotal() {
-            const amount = parseMoney(amountEl);
-            const delivery = parseMoney(deliveryEl);
-            const gst = parseMoney(gstEl);
+            const amount = parseMoneyEl(amountEl);
+            const delivery = parseMoneyEl(deliveryEl);
+            const gst = parseMoneyEl(gstEl);
 
             let discount = 0;
             const voucher = JSON.parse(localStorage.getItem("appliedVoucher"));
@@ -223,13 +237,18 @@
             totalEl.textContent = `SGD ${total.toFixed(2)}`;
         }
 
+        function recalcAll() {
+            recalcFromCartItems();
+            calculateTotal();
+        }
+
         function renderVoucher() {
             const voucher = JSON.parse(localStorage.getItem("appliedVoucher"));
 
             if (!voucher || !Number.isFinite(voucher.percent)) {
                 voucherTicket.classList.add("hidden");
                 voucherCheckbox.checked = false;
-                calculateTotal();
+                recalcAll();
                 return;
             }
 
@@ -237,19 +256,19 @@
             voucherTicket.classList.remove("hidden");
 
             voucherTicket.innerHTML = `
-            <div>
-                <strong>${voucher.code}</strong><br>
-                <span>${voucher.percent}% OFF your order</span>
-            </div>
-            <button id="removeVoucher">Remove</button>
-        `;
+                <div>
+                    <strong>${voucher.code}</strong><br>
+                    <span>${voucher.percent}% OFF your order</span>
+                </div>
+                <button id="removeVoucher">Remove</button>
+            `;
 
             document.getElementById("removeVoucher").onclick = () => {
                 localStorage.removeItem("appliedVoucher");
                 renderVoucher();
             };
 
-            calculateTotal();
+            recalcAll();
         }
 
         // Checkbox behaviour
@@ -266,12 +285,33 @@
             if (!voucherCheckbox.checked && voucher) {
                 localStorage.removeItem("appliedVoucher");
                 renderVoucher();
+            } else {
+                recalcAll();
             }
         });
 
-        // Initial render
+        // ✅ DELETE BUTTON: remove item + recalc totals (works even after voucher)
+        document.querySelectorAll(".remove-btn").forEach(btn => {
+            btn.addEventListener("click", () => {
+                const item = btn.closest(".cart-item");
+                if (item) item.remove();
+
+                // If cart becomes empty, auto remove voucher (optional but safer)
+                if (document.querySelectorAll(".cart-item").length === 0) {
+                    localStorage.removeItem("appliedVoucher");
+                    voucherTicket.classList.add("hidden");
+                    voucherCheckbox.checked = false;
+                }
+
+                recalcAll();
+            });
+        });
+
+        // Initial render + totals
         renderVoucher();
+        recalcAll();
     </script>
+
 
     <script>
         const continueBtn = document.querySelector(".checkout-btn");
