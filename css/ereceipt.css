@@ -69,15 +69,32 @@ body {
   color: white;
 }
 
-/* BACK BUTTON */
-.back-btn {
+/* Navigation & Header */
+.back-nav {
   position: absolute;
   left: 0;
-  background: none;
-  border: none;
-  color: white;
-  font-size: 22px;
-  cursor: pointer;
+}
+
+.btn-back {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 44px;
+  height: 44px;
+
+  color: #f1d279; /* same gold tone */
+  border: 1px solid rgba(241, 210, 121, 0.35);
+  border-radius: 10px;
+
+  text-decoration: none;
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+.btn-back:hover {
+  background: rgba(241, 210, 121, 0.12);
+  transform: translateX(-4px);
 }
 
 /* BARCODE */

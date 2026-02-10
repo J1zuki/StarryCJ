@@ -2,137 +2,141 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>STARRYCJ E-Receipt</title>
-  <link rel="stylesheet" href="./css/ereceipt.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>STARRYCJ E-Receipt</title>
+    <link rel="stylesheet" href="./css/ereceipt.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
-  <!-- TOP NAV -->
-  <header class="top-header">
-    <nav class="navbar navbar-expand-lg navbar-dark flex-column w-100">
-      <a class="navbar-brand mb-2" href="index.html">
-        <img src="./images/logo/logoo (1).png" alt="STARRYCJ" height="100">
-      </a>
+    <!-- TOP NAV -->
+    <header class="top-header">
+        <nav class="navbar navbar-expand-lg navbar-dark flex-column w-100">
+            <a class="navbar-brand mb-2" href="index.html">
+                <img src="./images/logo/logoo (1).png" alt="STARRYCJ" height="100">
+            </a>
 
-      <ul class="navbar-nav flex-row gap-4">
-        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="aboutus.html">About Us</a></li>
-        <li class="nav-item"><a class="nav-link" href="information.html">Information</a></li>
-        <li class="nav-item"><a class="nav-link" href="product.html">Products</a></li>
-        <li class="nav-item"><a class="nav-link" href="cart.html">Cart</a></li>
-        <li class="nav-item"><a class="nav-link" href="profile.html">Profile</a></li>
-      </ul>
-    </nav>
-  </header>
+            <ul class="navbar-nav flex-row gap-4">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="aboutus.html">About Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="information.html">Information</a></li>
+                <li class="nav-item"><a class="nav-link" href="product.html">Products</a></li>
+                <li class="nav-item"><a class="nav-link" href="cart.html">Cart</a></li>
+                <li class="nav-item"><a class="nav-link" href="profile.html">Profile</a></li>
+            </ul>
+        </nav>
+    </header>
 
     <!-- RECEIPT HEADER -->
     <div class="receipt-header">
-        <button class="back-btn" onclick="goBack()">←</button>
+        <nav class="back-nav">
+            <a href="profile.html" class="btn-back">
+                ←
+            </a>
+        </nav>
         <h2>E-Receipt</h2>
     </div>
 
-  <!-- RECEIPT CONTENT -->
+    <!-- RECEIPT CONTENT -->
     <main class="receipt-container">
         <!-- BARCODE -->
         <div class="barcode-container">
-        <img src="./images/product/barcode.png" alt="Order Barcode">
+            <img src="./images/product/barcode.png" alt="Order Barcode">
         </div>
 
         <!-- ITEMS -->
         <div class="cart-items">
-        <div class="cart-item">
-            <video src="./images/product/starHeadsets.mp4" autoplay muted loop playsinline></video>
-            <div class="item-info">
-            <h4>Blue Polaris</h4>
-            <p>Grounded in the stars...</p>
-            <div class="rating">★★★★☆</div>
+            <div class="cart-item">
+                <img src="./images/product/Headphone2.png" alt="Solar Flare">
+                <div class="item-info">
+                    <h4>Blue Polaris</h4>
+                    <p>Grounded in the stars...</p>
+                    <div class="rating">★★★★☆</div>
+                </div>
+
+                <div class="item-price">SGD 120.00</div>
             </div>
 
-            <div class="item-price">SGD 120.00</div>
-        </div>
+            <div class="cart-item">
+                <img src="./images/product/Headphone1.png" alt="Nebula Ethereal">
+                <div class="item-info">
+                    <h4>Nebula Ethereal</h4>
+                    <p>Hear the unseen...</p>
+                    <div class="rating">★★★★☆</div>
+                </div>
 
-        <div class="cart-item">
-            <img src="./images/product/Headphone1.jpeg" alt="Nebula Ethereal">
-            <div class="item-info">
-            <h4>Nebula Ethereal</h4>
-            <p>Hear the unseen...</p>
-            <div class="rating">★★★★☆</div>
+                <div class="item-price">SGD 180.00</div>
             </div>
 
-            <div class="item-price">SGD 180.00</div>
-        </div>
+            <div class="cart-item">
+                <img src="./images/product/Headphone3.png" alt="Solar Flare">
+                <div class="item-info">
+                    <h4>Solar Flare</h4>
+                    <p>Auditory energy unleashed...</p>
+                    <div class="rating">★★★★☆</div>
+                </div>
 
-        <div class="cart-item">
-            <img src="./images/product/Headphone2.jpeg" alt="Solar Flare">
-            <div class="item-info">
-            <h4>Solar Flare</h4>
-            <p>Auditory energy unleashed...</p>
-            <div class="rating">★★★★☆</div>
+                <div class="item-price">SGD 90.00</div>
             </div>
-
-            <div class="item-price">SGD 90.00</div>
-        </div>
         </div>
 
         <!-- ORDER INFO -->
         <div class="summary-box">
-        <div class="order-info">
+            <div class="order-info">
+                <div class="summary-row">
+                    <span>Order Date</span>
+                    <span>Sept 18, 2025</span>
+                </div>
+
+                <div class="summary-row">
+                    <span>Order Time</span>
+                    <span>10:00 AM</span>
+                </div>
+
+                <div class="summary-row">
+                    <span>Delivery Type</span>
+                    <span>Express Shipping</span>
+                </div>
+
+                <div class="summary-row">
+                    <span>Voucher</span>
+                    <span id="voucherInfo">No Voucher Applied</span>
+                </div>
+            </div>
+
+            <hr>
+
             <div class="summary-row">
-            <span>Order Date</span>
-            <span>Sept 18, 2025</span>
+                <span>Amount</span>
+                <span id="amount">SGD 390.00</span>
             </div>
 
             <div class="summary-row">
-            <span>Order Time</span>
-            <span>10:00 AM</span>
+                <span>Delivery Charge</span>
+                <span id="delivery">SGD 4.00</span>
             </div>
 
             <div class="summary-row">
-            <span>Delivery Type</span>
-            <span>Express Shipping</span>
+                <span>GST</span>
+                <span id="gst">SGD 9.00</span>
             </div>
 
-            <div class="summary-row">
-            <span>Voucher</span>
-            <span>Free Delivery for SGD 100 spent</span>
+            <div class="summary-row discount">
+                <span>Discount</span>
+                <span id="discount">SGD 0</span>
             </div>
-        </div>
 
-        <hr>
+            <hr>
 
-        <div class="summary-row">
-            <span>Amount</span>
-            <span>SGD 390.00</span>
-        </div>
+            <div class="summary-row total">
+                <span>Grand Total</span>
+                <span id="grandTotal">SGD 378.00</span>
+            </div>
 
-        <div class="summary-row">
-            <span>Delivery Charge</span>
-            <span>SGD 4.00</span>
-        </div>
-
-        <div class="summary-row">
-            <span>GST</span>
-            <span>SGD 9.00</span>
-        </div>
-
-        <div class="summary-row discount">
-            <span>Discount</span>
-            <span>SGD 0</span>
-        </div>
-
-        <hr>
-
-        <div class="summary-row total">
-            <span>Grand Total</span>
-            <span>SGD 378.00</span>
-        </div>
-        
-        <button class="checkout-btn" id="proceedPayment">
-            Proceed to Payment
-        </button>
+            <button class="checkout-btn" id="proceedPayment">
+                Proceed to Payment
+            </button>
 
         </div>
     </main>
@@ -140,34 +144,34 @@
     <!-- FOOTER -->
     <footer class="site-footer">
         <div class="footer-container">
-        <div class="footer-brand">
-            <img src="./images/logo/logoo (1).png" alt="STARRYCJ">
-            <p>Premium headphones with rewards & fun.</p>
-        </div>
+            <div class="footer-brand">
+                <img src="./images/logo/logoo (1).png" alt="STARRYCJ">
+                <p>Premium headphones with rewards & fun.</p>
+            </div>
 
-        <div class="footer-links">
-            <h4>Shop with us now !</h4>
-            <a href="index.html">Home</a>
-            <a href="product.html">Products</a>
-            <a href="dailylogin.html">Daily Login Rewards</a>
-            <a href="cart.html">Cart</a>
-        </div>
+            <div class="footer-links">
+                <h4>Shop with us now !</h4>
+                <a href="index.html">Home</a>
+                <a href="product.html">Products</a>
+                <a href="dailylogin.html">Daily Login Rewards</a>
+                <a href="cart.html">Cart</a>
+            </div>
 
-        <div class="footer-links">
-            <h4>Our Company</h4>
-            <a href="aboutus.html">About Us</a>
-            <a href="information.html">Information</a>
-        </div>
+            <div class="footer-links">
+                <h4>Our Company</h4>
+                <a href="aboutus.html">About Us</a>
+                <a href="information.html">Information</a>
+            </div>
         </div>
 
         <div class="footer-bottom">
-        © 2026 STARRYCJ. All rights reserved.
+            © 2026 STARRYCJ. All rights reserved.
         </div>
     </footer>
 
     <script>
         function goBack() {
-        window.location.href = "cart.html";
+            window.location.href = "cart.html";
         }
     </script>
 
@@ -176,5 +180,42 @@
             window.location.href = "payment.html";
         });
     </script>
+
+    <script>
+        const amountEl = document.getElementById("amount");
+        const deliveryEl = document.getElementById("delivery");
+        const gstEl = document.getElementById("gst");
+        const discountEl = document.getElementById("discount");
+        const totalEl = document.getElementById("grandTotal");
+        const voucherInfoEl = document.getElementById("voucherInfo");
+
+        const parseMoney = el =>
+            parseFloat(el.textContent.replace(/[^\d.]/g, "")) || 0;
+
+        function renderReceipt() {
+            const voucher = JSON.parse(localStorage.getItem("appliedVoucher"));
+
+            const amount = parseMoney(amountEl);
+            const delivery = parseMoney(deliveryEl);
+            const gst = parseMoney(gstEl);
+
+            let discount = 0;
+
+            if (voucher && Number.isFinite(voucher.percent)) {
+                discount = amount * (voucher.percent / 100);
+                discountEl.textContent = `- SGD ${discount.toFixed(2)}`;
+                voucherInfoEl.textContent = `${voucher.code} (${voucher.percent}% OFF)`;
+            } else {
+                discountEl.textContent = "SGD 0.00";
+                voucherInfoEl.textContent = "No Voucher Applied";
+            }
+
+            const total = amount + delivery + gst - discount;
+            totalEl.textContent = `SGD ${total.toFixed(2)}`;
+        }
+
+        renderReceipt();
+    </script>
 </body>
+
 </html>

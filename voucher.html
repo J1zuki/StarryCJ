@@ -48,7 +48,9 @@
                             <h3>Free Delivery with min of $100</h3>
                             <p class="price">100 💎</p>
                         </div>
-                        <button class="redeem-btn">Redeem</button>
+                        <button class="redeem-btn disabled" disabled>
+                            Redeem
+                        </button>
                     </div>
 
                     <div class="voucher-card">
@@ -59,7 +61,9 @@
                             <h3>$10 Discount with min of $100</h3>
                             <p class="price">150 💎</p>
                         </div>
-                        <button class="redeem-btn">Redeem</button>
+                        <button class="redeem-btn" data-code="STAR150" data-percent="10">
+                            Redeem
+                        </button>
                     </div>
 
                     <div class="voucher-card">
@@ -70,7 +74,9 @@
                             <h3>$25 Discount with min of $150</h3>
                             <p class="price">250 💎</p>
                         </div>
-                        <button class="redeem-btn">Redeem</button>
+                        <button class="redeem-btn disabled" disabled>
+                            Redeem
+                        </button>
                     </div>
 
                     <div class="voucher-card">
@@ -81,13 +87,28 @@
                             <h3>$50 Discount with min of $200</h3>
                             <p class="price">300 💎</p>
                         </div>
-                        <button class="redeem-btn">Redeem</button>
+                        <button class="redeem-btn disabled" disabled>
+                            Redeem
+                        </button>
                     </div>
                 </div>
             </div>
         </section>
     </div>
 
+    <script>
+        document.querySelectorAll(".redeem-btn").forEach(btn => {
+            btn.addEventListener("click", () => {
+                const voucher = {
+                    code: btn.dataset.code,
+                    percent: Number(btn.dataset.percent)
+                };
+
+                localStorage.setItem("appliedVoucher", JSON.stringify(voucher));
+                window.location.href = "cart.html";
+            });
+        });
+    </script>
 </body>
 
 </html>
