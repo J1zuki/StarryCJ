@@ -32,11 +32,24 @@ function renderMembers() {
     allList.innerHTML = allHTML;
     nearbyList.innerHTML = nearbyHTML;
 }
+
 function openChat(name) {
-    // Redirect to the message page with the name as a parameter
+    alert("Opening chat for: " + name); // This will confirm the button click works
     window.location.href = `message.html?user=${encodeURIComponent(name)}`;
 }
 
 
 // Initialize on load
-document.addEventListener('DOMContentLoaded', renderMembers);
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Get the parameters from the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const userName = urlParams.get('user');
+
+    // 2. Find the element where you want to show the name (e.g., an <h2> or <span>)
+    const chatTitle = document.getElementById('chat-user-name'); 
+
+    // 3. Update the text
+    if (userName && chatTitle) {
+        chatTitle.textContent = userName;
+    }
+});
