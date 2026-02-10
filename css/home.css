@@ -204,13 +204,14 @@ h3 {
 }
 
 /* GAMIFICATION */
+/* GAMIFICATION */
 .gamification {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 32px;
-  max-width: 700px;
+  max-width: 750px; /* Slightly widened for better spacing */
   margin: 40px auto;
-  align-items: start;
+  align-items: stretch; /* Ensures cards are same height */
 }
 
 .game-card {
@@ -219,6 +220,25 @@ h3 {
   padding: 24px;
   color: #000;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; 
+  text-align: center;
+}
+
+.game-img-container {
+  height: 120px; /* Fixed height for the image area */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.game-card img {
+  max-height: 100%; /* Image will never be taller than 120px */
+  max-width: 100%;  /* Image will never be wider than the card */
+  width: auto;      /* Maintain aspect ratio */
+  object-fit: contain;
 }
 
 .game-card h3 {
