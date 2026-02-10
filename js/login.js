@@ -56,7 +56,7 @@ document.getElementById("loginForm").addEventListener("submit", async function (
     localStorage.setItem("currentUser", localUser.username);
     localStorage.setItem("currentAvatar", localUser.avatar || "");
 
-    window.location.href = "./home.html";
+    window.location.href = "./index.html";
   } else {
     alert("Invalid username / email or password ❌");
   }
