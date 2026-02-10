@@ -114,3 +114,17 @@ function closeChat() {
         console.log("🚀 Live Mode: Progress will be saved permanently.");
     }
 })();
+
+// --- 9. EVENT LISTENERS ---
+document.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const userName = urlParams.get('user'); 
+    const chatTitle = document.getElementById('chat-user-name'); 
+
+    if (userName && chatTitle) {
+        // This replaces "Loading..." with the actual name from the URL
+        chatTitle.textContent = userName; 
+    } else if (chatTitle) {
+        chatTitle.textContent = "Chat"; // Fallback if no name is found
+    }
+});
