@@ -12,11 +12,12 @@ function renderMembers() {
     
     if (!allList || !nearbyList) return;
 
-    let allHTML = "";
-    let nearbyHTML = "";
+    // Clear lists first to prevent duplicates
+    allList.innerHTML = "";
+    nearbyList.innerHTML = "";
 
     members.forEach(member => {
-        const html = `
+        const memberHTML = `
             <div class="member-card">
                 <img src="${member.avatar}" alt="${member.name}" class="member-avatar">
                 <div class="member-info">
@@ -25,31 +26,26 @@ function renderMembers() {
                 </div>
             </div>`;
         
-        if (member.group === 'all') allHTML += html;
-        else nearbyHTML += html;
+        if (member.group === 'all') {
+            allList.innerHTML += memberHTML; // Using += is vital here
+        } else {
+            nearbyList.innerHTML += memberHTML;
+        }
     });
-
-    allList.innerHTML = allHTML;
-    nearbyList.innerHTML = nearbyHTML;
 }
 
 function openChat(name) {
-    alert("Opening chat for: " + name); // This will confirm the button click works
+    // Encodes the name properly for the URL
     window.location.href = `message.html?user=${encodeURIComponent(name)}`;
 }
 
-
-// Initialize on load
+document.addEventListener('DOMContentLoaded', renderMembers);
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Get the parameters from the URL
     const urlParams = new URLSearchParams(window.location.search);
-    const userName = urlParams.get('user');
-
-    // 2. Find the element where you want to show the name (e.g., an <h2> or <span>)
+    const userName = urlParams.get('user'); // This gets the name from the URL
     const chatTitle = document.getElementById('chat-user-name'); 
 
-    // 3. Update the text
     if (userName && chatTitle) {
-        chatTitle.textContent = userName;
+        chatTitle.textContent = userName; // This puts the name in the header
     }
 });
