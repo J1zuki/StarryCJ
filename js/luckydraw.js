@@ -1,39 +1,92 @@
-// 1. Use sessionStorage so it resets when you close/reopen the tab
-let chances = sessionStorage.getItem('drawChances') !== null 
-              ? parseInt(sessionStorage.getItem('drawChances')) 
-              : 1;
+// --- CONFIGURATION ---
+const IS_TESTING_MODE = true; // Set to false when you go live!
+
+// 1. Centralized State Management (Using localStorage)
+function getGameState() {
+    // If testing, we force a reset of the specific keys we care about
+    if (IS_TESTING_MODE && !sessionStorage.getItem('resetDone')) {
+        localStorage.setItem('drawChances', '1');
+        localStorage.setItem('isGameOver', 'false');
+        localStorage.removeItem('hasClaimedShareBonus');
+        sessionStorage.setItem('resetDone', 'true'); // Prevents infinite reset loop during session
+    }
+
+    const storedChances = localStorage.getItem('drawChances');
+    const isGameOver = localStorage.getItem('isGameOver') === 'true';
+    
+    // Default state for a brand new user
+    if (storedChances === null) {
+        localStorage.setItem('drawChances', 1);
+        localStorage.setItem('isGameOver', 'false');
+        return { chances: 1, isGameOver: false };
+    }
+    
+    return { 
+        chances: parseInt(storedChances), 
+        isGameOver: isGameOver 
+    };
+}
 
 const drawBtn = document.getElementById('drawBtn');
 const chanceDisplay = document.getElementById('chanceCount');
 
+// 2. UI Update Logic
 function updateUI() {
-    chanceDisplay.innerText = chances;
-    if (chances <= 0) {
-        drawBtn.innerText = "NO CHANCES LEFT";
+    const state = getGameState();
+    
+    if (chanceDisplay) {
+        // Correct grammar: "pick" if 1, "picks" if 0 or 2+
+        const plural = state.chances === 1 ? "pick" : "picks";
+        chanceDisplay.innerText = `${state.chances} remaining daily ${plural}.`;
+    }
+    
+    if (state.isGameOver || state.chances <= 0) {
+        drawBtn.innerText = state.isGameOver ? "DRAW COMPLETED" : "NO CHANCES LEFT";
+        drawBtn.classList.add('disabled-btn'); // Best to use a CSS class
         drawBtn.style.backgroundColor = "#ccc";
-        drawBtn.style.pointerEvents = "none"; 
-        drawBtn.style.cursor = "not-allowed";
+        drawBtn.style.pointerEvents = "none";
+    } else {
+        drawBtn.innerText = "PICK A TICKET!";
+        drawBtn.classList.remove('disabled-btn');
+        drawBtn.style.backgroundColor = ""; 
+        drawBtn.style.pointerEvents = "auto";
     }
 }
 
-// 2. Handle the click: Save the '0' BEFORE moving to the win page
+// 3. The Draw Action
 drawBtn.addEventListener('click', (e) => {
-    if (chances > 0) {
-        chances--;
-        sessionStorage.setItem('drawChances', chances); 
-        // We don't need updateUI() here because the page is about to change
+    let state = getGameState();
+    
+    if (state.chances > 0) {
+        state.chances--;
+        
+        // Save new state to localStorage
+        localStorage.setItem('drawChances', state.chances);
+        
+        // Only set game over if they actually have 0 chances
+        if (state.chances === 0) {
+            localStorage.setItem('isGameOver', 'true');
+        }
+        
+        updateUI(); 
     } else {
         e.preventDefault(); 
         alert("No chances left!");
     }
 });
 
-// 3. IMPORTANT: This ensures that if the user hits "Back", 
-// the page checks the storage again and shows 0.
-window.addEventListener('pageshow', (event) => {
-    const savedChances = sessionStorage.getItem('drawChances');
-    if (savedChances !== null) {
-        chances = parseInt(savedChances);
+// 4. Lifecycle Listeners
+window.addEventListener('pageshow', updateUI);
+document.addEventListener('DOMContentLoaded', updateUI);
+
+// Sync across tabs
+window.addEventListener('storage', (e) => {
+    if (['drawChances', 'isGameOver', 'hasClaimedShareBonus'].includes(e.key)) {
+        updateUI();
     }
+<<<<<<< HEAD
     updateUI();
 });
+=======
+});
+>>>>>>> 96940f66c88f87222ac44cb50a14a4139c31d12c

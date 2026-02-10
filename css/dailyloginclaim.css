@@ -1,0 +1,106 @@
+:root {
+    --gold-border: #d4af37;
+    --gold-box: #c09600; /* The darker mustard gold in your image */
+    --blue-tag: #5c7fa3;
+    --blue-btn: #6283a9;
+    --text-dark: #000000;
+    --text-muted: #7a8eb3;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    /* Starry background effect */
+    background-color: #011627;
+    background-image: radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px);
+    background-size: 550px 550px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Modal Overlay - Changed to flex for visibility */
+.modal-overlay {
+    display: flex; 
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Success Card */
+.success-card {
+    background: white;
+    padding: 50px 30px;
+    border-radius: 35px;
+    border: 6px solid var(--gold-border);
+    text-align: center;
+    max-width: 400px;
+    width: 85%;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.success-day-box {
+    background: var(--gold-box);
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 30px;
+    border-radius: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.success-day-box h2 { 
+    margin: 0; 
+    font-size: 2.8rem; 
+    font-weight: 800;
+}
+
+.gem-tag-large {
+    background: var(--blue-tag);
+    padding: 8px 20px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-top: 15px;
+}
+
+.success-title {
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: var(--text-dark);
+    margin: 15px 0 10px;
+    line-height: 1.1;
+}
+
+.success-subtext {
+    color: var(--text-muted);
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 30px;
+    padding: 0 20px;
+}
+
+.close-modal-btn {
+    background: var(--blue-btn);
+    color: white;
+    border: none;
+    padding: 15px 0;
+    width: 220px;
+    border-radius: 50px; /* Fully rounded ends */
+    font-size: 1.3rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.close-modal-btn:hover {
+    transform: scale(1.05);
+}

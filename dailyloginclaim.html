@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StarryCJ - Daily Login</title>
-    <link rel="stylesheet" href="./css/dailylogin.css">
+    <title>StarryCJ - Daily Login Claim</title>
+    <link rel="stylesheet" href="./css/dailyloginclaim.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 
@@ -28,17 +28,24 @@
         </header>
 
         <section class="dashboard-container">
-            <div class="rewards-card">
-                <div class="rewards-grid" id="rewards-grid">
+            <div id="success-modal" class="modal-overlay">
+                <div class="success-card">
+                    <div class="success-day-box">
+                        <h2 id="modal-day-text">Day 1</h2>
+                        <div class="gem-tag-large">2 Gems 💎</div>
+                    </div>
+
+                    <h1 class="success-title">You have Claimed today reward!</h1>
+                    <p class="success-subtext">Come back to collect more Gems to exchange vouchers!</p>
+
+                    <button class="close-modal-btn" onclick="closeModal()">Close</button>
                 </div>
-                <button id="claim-btn" class="claim-btn" onclick="claimReward()">Claim</button>
-                <p id="timer-msg" class="timer-msg"></p>
             </div>
         </section>
 
     </div>
 
-    <script src="./js/dailylogin.js"></script>
+    <script src="./js/dailyloginclaim.js"></script>
 </body>
 
 </html>
