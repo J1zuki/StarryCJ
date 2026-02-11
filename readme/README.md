@@ -1,6 +1,6 @@
 # IP-Assg
-Assignment for IP: https://github.com/J1zuki/IP-Assg.git
-Github Site: https://j1zuki.github.io/IP-Assg/
+Assignment for IP: https://github.com/J1zuki/StarryCJ.git
+Github Site: https://j1zuki.github.io/StarryCJ/
 
 STARRYCJ E-Commerce Website
 
