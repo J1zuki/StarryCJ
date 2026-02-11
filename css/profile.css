@@ -6,17 +6,16 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background: linear-gradient(
-    135deg,
-    #05060a 0%,
-    #0b1c2d 50%,
-    #081420 100%
-  );
+  background: linear-gradient(135deg,
+      #05060a 0%,
+      #0b1c2d 50%,
+      #081420 100%);
 }
 
 .app {
   width: 100%;
-  max-width: 1200px;   /* desktop website width */
+  max-width: 1200px;
+  /* desktop website width */
   margin: 0 auto;
   padding: 40px 20px 120px;
 }
@@ -114,14 +113,16 @@ body {
 
 .icon-link {
   text-decoration: none;
-  display: flex;                 /* 🔑 makes all items same height */
+  display: flex;
+  /* 🔑 makes all items same height */
 }
 
 .icon-box {
   background: white;
   border-radius: 16px;
 
-  height: 140px;                 /* 🔑 same height for all */
+  height: 140px;
+  /* 🔑 same height for all */
   width: 100%;
 
   display: flex;
@@ -158,7 +159,7 @@ body {
 /* HOVER */
 .icon-link:hover .icon-box {
   transform: translateY(-4px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
 }
 
 /* =========================
@@ -178,7 +179,7 @@ body {
   justify-content: space-between;
 
   border: 2px solid #f1d279;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
 }
 
 /* LEFT */
@@ -247,21 +248,21 @@ body {
 .likes-grid .like-card {
   background: white;
   border-radius: 18px;
-  height: 220px;
-
+  height: 240px;
+  flex-direction: column;
   display: flex;
   align-items: center;
   justify-content: center;
 
   padding: 18px;
-  box-shadow: 0 8px 22px rgba(0,0,0,0.35);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
 
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .likes-grid .like-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 14px 32px rgba(0,0,0,0.45);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.45);
 }
 
 .likes-grid .like-card img {
@@ -271,6 +272,70 @@ body {
   border-radius: 12px;
 }
 
+/* Container inside the card to stack items */
+.like-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+}
+
+/* Adjust image height to make room for button */
+.likes-grid .like-card img {
+  max-height: 140px;
+  /* Reduced slightly to fit button */
+  margin-bottom: 10px;
+}
+
+/* Individual Button Styling */
+.individual-view-btn {
+  background: #015085;
+  color: white;
+  text-decoration: none;
+  padding: 6px 20px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  width: 100%;
+  text-align: center;
+}
+
+.individual-view-btn:hover {
+  background: #f1d279;
+  color: #0d2745;
+}
+
+/* =========================
+   VIEW MORE BUTTON
+   ========================= */
+.view-more-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+.view-btn {
+  background: #f1d279;
+  color: #0d2745;
+  padding: 10px 30px;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.view-btn:hover {
+  background: transparent;
+  color: #f1d279;
+  border: 2px solid #f1d279;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(241, 210, 121, 0.3);
+}
 
 /* =========================
    FOOTER
@@ -322,7 +387,7 @@ body {
   text-align: center;
   margin-top: 40px;
   padding-top: 20px;
-  border-top: 1px solid rgba(255,255,255,0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   font-size: 13px;
   color: #a0aec0;
 }
