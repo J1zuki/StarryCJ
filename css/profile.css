@@ -337,9 +337,7 @@ body {
   box-shadow: 0 5px 15px rgba(241, 210, 121, 0.3);
 }
 
-/* =========================
-   FOOTER
-   ========================= */
+/* FOOTER */
 .site-footer {
   background: linear-gradient(90deg, #015085, #015085);
   color: white;
@@ -347,16 +345,31 @@ body {
   margin-top: 80px;
 }
 
+.footer-links a,
+.footer-brand p,
+.footer-bottom {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.footer-links a:hover {
+  color: #ffffff;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
 .footer-container {
   max-width: 1200px;
   margin: 0 auto;
+
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 40px;
 }
 
 .footer-brand img {
-  height: 120px;
+  height: 150px;
   margin-bottom: 10px;
 }
 
@@ -387,17 +400,7 @@ body {
   text-align: center;
   margin-top: 40px;
   padding-top: 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(255,255,255,0.1);
   font-size: 13px;
   color: #a0aec0;
-}
-
-@media (max-width: 768px) {
-  .likes-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .likes-grid img {
-    height: 180px;
-  }
 }
