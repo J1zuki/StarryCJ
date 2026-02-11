@@ -2,8 +2,6 @@
 Assignment for IP: https://github.com/J1zuki/IP-Assg.git
 Github Site: https://j1zuki.github.io/IP-Assg/
 
-Test
-
 STARRYCJ E-Commerce Website
 
 ---
