@@ -1,5 +1,6 @@
 // --- CONFIGURATION ---
-const IS_TESTING_MODE = true; // Set to false when you go live
+const IS_TESTING_MODE = true;
+let currentBotName = "Bot";
 
 // 1. The core function to send a message
 function sendTextMessage() {
@@ -46,7 +47,8 @@ function appendMessage(sender, content, type = 'received', isImage = false) {
 // 3. Helper for bot replies
 function safeBotReply(text, delay) {
     setTimeout(() => {
-        appendMessage('Bot', text, 'received');
+        // Use the variable instead of the hardcoded "Bot"
+        appendMessage(currentBotName, text, 'received');
     }, delay);
 }
 
@@ -76,7 +78,7 @@ function grantExtraChance() {
     localStorage.setItem('isGameOver', 'false');
     localStorage.setItem('hasClaimedShareBonus', 'true'); // Flag is now saved permanently
 
-    safeBotReply("🎉 One-time bonus earned! Go back to the Lucky Draw page!", 1800);
+    safeBotReply("Thanks for sharing! We both have an extra chance! 🍀", 1800);
 }
 
 // 6. Image Upload Handler
@@ -121,10 +123,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const userName = urlParams.get('user'); 
     const chatTitle = document.getElementById('chat-user-name'); 
 
-    if (userName && chatTitle) {
-        // This replaces "Loading..." with the actual name from the URL
-        chatTitle.textContent = userName; 
+    if (userName) {
+        currentBotName = userName; // Set the bot's name globally
+        if (chatTitle) chatTitle.textContent = userName; 
     } else if (chatTitle) {
-        chatTitle.textContent = "Chat"; // Fallback if no name is found
+        chatTitle.textContent = "Chat";
     }
 });

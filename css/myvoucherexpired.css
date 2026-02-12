@@ -199,7 +199,7 @@ body {
 .status-btn {
     background: none;
     border: none;
-    color: #555; /* Muted color for inactive */
+    color: #888; /* Muted color for inactive */
     font-size: 0.85rem;
     font-weight: 600;
     cursor: pointer;
@@ -208,8 +208,8 @@ body {
 }
 
 .status-btn.active {
-    color: #0066cc;
-    border-bottom: 2px solid #0066cc;
+    color: #f1d279;
+    border-bottom: 2px solid #f1d279;
 }
 
 /* Empty State Styling */
