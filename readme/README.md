@@ -4,6 +4,8 @@ Github Site: https://j1zuki.github.io/StarryCJ/
 
 STARRYCJ E-Commerce Website
 
+sync
+
 ---
 
 Project Overview:
