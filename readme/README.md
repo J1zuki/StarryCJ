@@ -84,6 +84,16 @@ Features Left to Implement
 
 ---
 
+Assistive AI
+- During the development of the STARRYCJ E-Commerce Website, AI tools such as ChatGPT were used to assist in implementing selected features, debugging errors, improving logic structure, and refining UI behaviour. AI was used as a support tool to enhance productivity and understanding, not to replace conceptual design decisions.
+
+- All AI-generated outputs were reviewed, modified, tested, and adapted to suit the project requirements.
+
+1. Login System (API + Local Fallback): To assist in implementing login functionality using ReqRes API while allowing fallback to local login if API fails.
+![alt text](image.png)
+
+---
+
 Technologies Used:
 - HTML5 – Structure and content of all pages
 - CSS3 – Styling, layout, and responsiveness
