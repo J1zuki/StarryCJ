@@ -1,5 +1,5 @@
 const TOTAL_DAYS = 9;
-const COOLDOWN_HOURS = 0.001; 
+const COOLDOWN_HOURS = 0.030; 
 
 // 1. Try to get data from the current SESSION
 let loginData = JSON.parse(sessionStorage.getItem('dailyLogin'));
