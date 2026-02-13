@@ -92,6 +92,11 @@ Assistive AI
 1. Login System (API + Local Fallback): To assist in implementing login functionality using ReqRes API while allowing fallback to local login if API fails.
 ![alt text](image.png)
 
+2. Shopping Cart & Dynamic Total Calculation: To assist in recalculating cart totals dynamically when items are added, removed, or when vouchers are applied.
+![alt text](image-1.png)
+
+3. Debugging & Code Refactoring: To troubleshoot errors and improve code readability.
+![alt text](image-2.png)
 ---
 
 Technologies Used:
